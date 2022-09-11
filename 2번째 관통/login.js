@@ -3,10 +3,11 @@ window.onload = localStorageInit;
 function localStorageInit() {
     // 회원 정보를 저장하는 배열
 
-    if (localStorage.getItem("userInfos").length < 1) {
-        localStorage.setItem("userInfos", JSON.stringify([{ id: "admin", password: "admin", name: "admin", type: "root" },
-        { id: "admin1", password: "admin1", name: "김태훈", type: "root" }]));
-    }
+    if (localStorage.getItem("userInfos") != null)
+        if (localStorage.getItem("userInfos").length < 1) {
+            localStorage.setItem("userInfos", JSON.stringify([{ id: "admin", password: "admin", name: "admin", type: "root" },
+            { id: "admin1", password: "admin1", name: "김태훈", type: "root" }]));
+        }
     else {
 
         const userInfos = JSON.parse(localStorage.getItem("userInfos")); console.log(localStorage.getItem("userInfos"));
