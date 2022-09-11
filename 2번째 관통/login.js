@@ -101,7 +101,10 @@ console.log(userInfos)
         for (const a of userInfos) {
             if (a.id == id){
                 sessionStorage.setItem("isLogIn", JSON.stringify(a));
-                window.location.replace(window.location.protocol + "//" + "localhost:" + window.location.port + "/index.html");
+                if (window.location.hostname == "127.0.0.1")
+                    window.location.replace(window.location.protocol + "//" + "localhost:" + window.location.port + "/index.html");
+                else
+                     window.location.replace("./index.html");
             }
         }
     }
