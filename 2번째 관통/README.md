@@ -50,7 +50,7 @@
 ### XML데이터를 받아올 때, 로딩페이지를 띄움. 많은 양의 XML을 받아올 경우, 렉이 걸리거나 아무런 동작이 안하는 것 처럼 느껴짐. 개발자가 아닌 사용자는 이점을 모르기 때문에, 로딩페이지를 만듬
 [그림]
 
-# 페이지를 교체하는 건, 이동을 하지 않고 화면에서 별도의 교체영역에서 내용만 교체하도록 만듬, 그 영역을 html에서 contents class로 지정함.
+### 페이지를 교체하는 건, 이동을 하지 않고 화면에서 별도의 교체영역에서 내용만 교체하도록 만듬, 그 영역을 html에서 contents class로 지정함.
 [그림]
 
 ### Navbar의 맨 하단 오른쪽의 hamburgur버튼 클릭시, Navbar의 width가 커짐. 반응형 웹에 맞게 제작했기 때문에, Navbar가 아닌 영역에서도 자동으로 레이아웃이 맞춰지도록 설계하였음.
@@ -59,7 +59,7 @@
 ### Navbar Item의 Dashboard에서 Recent View가 의미하는 것
 Map영역에서 사용자가 관심이 있어서, 오른쪽 상자들을 클릭하면 History로 남게됨. 이걸 Recent Views에 표시하도록 만듬. 판매상태는 Random함수를 사용, JAVASCRIPT로 HTML Class에 "Status"에서 "Status Selling", "Status Sold" 등을 추가하면, CSS에서 '판매중' 등을 표시하도록 만듬.
 
-# CSS 관련
+### CSS 관련
 사용자에게 표시하는 부분은 최대한 CSS로 구현하였음. 예를 들어 Navbar의 width를 늘린다던지, 웹페이지의 내용을 업데이트 할 때 반복되는 글자이면 Sold, Active, Clicked 등의 클래스를 JS로 추가하기만 하면, CSS에서 작업하도록 만듬. 즉, JS는 CSS에게 이벤트가 발생했다는 것을 알려주기만 하고, 텍스트, div 등의 width 등의 변경은 CSS에서 담당함.
 
 
