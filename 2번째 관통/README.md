@@ -4,6 +4,8 @@
          1. 하루 허용 사용량 초과 2. 공공데이터 service key만료  
          xml을 받는 내용은 apt.js파일의 url부분에 있음. 2개의 url이 있을텐데, 첫번째는 select box용임. 두번째일거야.
          
+         ![그림15](./craft_img/그림15.png)
+         
          
          KoHKDfRy7ikARry4tmUsUR40977GjgeRnIE6kdRYjsiueTVkBtpETT0ZKlqHYUH%2BPDUKt%2B4I8uym%2FO3LvuAbZA%3D%3D
 
