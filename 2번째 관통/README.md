@@ -12,7 +12,9 @@
  - 로그인 동작(JS) 작성
  - 공공데이터 포털에서 XML 받아오는거
  
-#### 협업작업 : 데이터를 웹페이지에 표시하는 것. 소희님이 설계한 JSON데이터를 내가 조사한 JAVASCRIPT QUERYSELECTOR의 innerHTML/outerHTML 및 createContextualFragment을 이용해 표시함
+#### 협업작업
+              데이터를 웹페이지에 표시하는 것. 소희님이 설계한 JSON데이터를 내가 조사한 JAVASCRIPT QUERYSELECTOR의 innerHTML/outerHTML 및 createContextualFragment을 이용해 표시함
+
                요구사항에서 빠진 것이 뭐가 있는지 같이 이야기함
 
 # 결과물
