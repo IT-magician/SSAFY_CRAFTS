@@ -224,7 +224,7 @@
       if (sessionStorage.getItem("isLogIn") == "" || sessionStorage.getItem("isLogIn") == null) window.location = "./login.html";
       
       if (window.location.hostname == "127.0.0.1")
-       /window.location.replace(window.location.protocol + "//" + "localhost:" + window.location.port + window.location.pathname + window.location.search)
+       window.location.replace(window.location.protocol + "//" + "localhost:" + window.location.port + window.location.pathname + window.location.search)
 
       navItems[1].click()
 
