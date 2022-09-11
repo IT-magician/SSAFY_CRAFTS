@@ -1,4 +1,9 @@
 # 팀 프로젝트
+- URL : https://it-magician.github.io/SSAFY_CRAFTS/2%EB%B2%88%EC%A7%B8%20%EA%B4%80%ED%86%B5  
+- 알림 : XML이 요구되는 페이지가 동작안하는건 다음과 같은 이유임.  
+         1. 하루 허용 사용량 초과 2. 공공데이터 service key만료  
+         xml을 받는 내용은 apt.js파일의 url부분에 있음. 2개의 url이 있을텐데, 첫번째는 select box용임. 두번째일거야.
+
  # 제작자
  나, 안소희님
 
