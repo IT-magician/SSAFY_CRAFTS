@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="orderport" content="width=device-width, initial-scale=1.0" />
+  <title>SSAFY HOME FINDER</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3dc1d30bd83040ce1fe426e23ef1f0b8&libraries=services"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="loading-container">
+    <div class="loading-card">
+      <div class="percent" style="--clr:#04fc43;--num:0;">
+        <div class="dot"></div>
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70"></circle>
+        </svg>
+        <div class="number">
+          <h2>0</h2>
+          <p>다운로드 완료</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="nav" id="nav2">
+      <ul>
+        <li>
+          <div>
+            <i class="fa-solid fa-building"></i>
+            <span class="title">부동산 플랫폼</span>
+          </div>
+        </li>
+        <li sourceHTML="dashboard.html">
+          <div>
+            <i class="fa-solid fa-chart-line"></i>
+            <span class="title">Dashboard</span>
+          </div>
+        </li>
+        <li sourceHTML="search.html">
+          <div>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span class="title">아파트 탐색</span>
+            <!-- 이 탭은 사진과 dashboard에 있는 각 tr의 정보를 함께 볼수있도록 만들것임, 만약 클릭한다면 새로운 창을 띄워서 지도, "환경 지도점검", "주변 상가 정보" 등을 보여줄것임 -->
+          </div>
+        </li>
+        <li class="tab">
+          <input type="checkbox" id="chck1">
+          <label class="tab-label" for="chck1">
+            <div>
+              <i class="fa-solid fa-map-location-dot"></i>
+              <span class="title">Map</span>
+            </div>
+          </label>
+          <div class="tab-content clickedNav2" sourceHTML="Map1">
+            <i class="fa-solid fa-money-check-dollar"></i>
+            <span class="title">아파트 실거래가</span>
+          </div>
+          <div class="tab-content" sourceHTML="Map2">
+            <i class="fa-solid fa-info"></i>
+            <span class="title">아파트 상세정보</span>
+          </div>
+
+        </li>
+        <li sourceHTML="userManage.html">
+          <div>
+            <i class="fa-regular fa-address-card"></i>
+            <span class="title">Account</span>
+          </div>
+        </li>
+        <li sourceHTML="">
+          <div>
+            <i class="fa-solid fa-gear"></i>
+            <span class="title">Setting</span>
+          </div>
+        </li>
+        <li sourceHTML="out" class="clickedNav">
+          <div>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span class="title">Sign out</span>
+          </div>
+        </li>
+      </ul>
+      <div class="toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="Main">
+      <div class="header">
+        <h2>ssafy home finder</h2>
+
+        <div class="findBox">
+          <input type="text" placeholder="search here" class="search" />
+          <i class="fa-solid fa-magnifying-glass" onclick="alert('clicked')"></i>
+        </div>
+
+        <div class="user">
+          <div class="userImg"><img src="반명함.jpg" alt="" /></div>
+          <div class="userName">김태훈</div>
+        </div>
+      </div>
+
+      <div class="contents"></div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript" src="loadMap.js"></script>
+  <script type="text/javascript" src="apt.js"></script>
+  <script>
+    let nav = document.querySelector(".nav");
+    let Main = document.querySelector(".Main");
+    let toggleBtn = document.querySelector(".toggle");
+    let findBox = document.querySelector(".Main .header .findBox input");
+    let headerBox = document.querySelector(".Main .header");
+    let contentBox = document.querySelector(".Main .contents");
+    let navItems = document.querySelectorAll(".nav li");
+    let nav_MapContents = navItems[3].querySelectorAll(".tab-content")
+
+
+    let userAccounts = null;
+
+    let homeBox = null;
+
+    let recentView_bodyRow_str = null;
+    let homeView_str = null;
+    let SearchTable = null;
+    let mapTable = null;
+
+    let aptBtn = null;
+
+    let geocoder = null;
+    let map = null;
+    let mapContainer = null;
+    let mapResults = null;
+
+
+    const recentSearched = []
+
+    function getDashboard(data) {
+      console.log(recentSearched)
+      // ------------------ data insert
+      fetch("./contents/dashboardRowClass.html")
+        .then((response) => response.text())
+        .then((htmlStr) => {
+          // update content box
+
+          let recentView = document.querySelector(".details .recentOrders table");
+          let recentView_body = recentView.querySelector("tbody");
+
+          let tmp = document.createElement("tr");
+          tmp.innerHTML = htmlStr;
+
+          tbody_str = "";
+
+          const sellingStatus = ["Selling", "Sold", "Reserved"]
+
+          for (let i = recentSearched.length - 1; i >= 0; i--) {
+            tmp.cells[0].innerHTML = recentSearched[i].apartName;
+            tmp.cells[1].innerHTML = recentSearched[i].dealPrice;
+            tmp.cells[2].innerHTML = recentSearched[i].buildAt;
+            tmp.cells[3].innerHTML = recentSearched[i].village;
+
+
+
+            tmp.cells[4].querySelector("span").classList.add(sellingStatus[Math.floor(Math.random() * 3)]);
+
+            tbody_str += tmp.outerHTML;
+          }
+
+          //console.log(tbody_str)
+
+          document.querySelector(".details .recentOrders table tbody").innerHTML = tbody_str;
+        })
+
+    }
+    function getSearchTable(data) {
+
+      // ------------------ data insert
+      let searchTable = document.querySelector(".Main .contents .searchHomeTable table");
+      let searchTableBody = searchTable.querySelector("tbody");
+
+      let tmp = document.createElement("tr");
+      tmp.innerHTML =
+        "<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>";
+
+      tbody_str = "";
+
+      for (a of data) {
+        tmp.cells[0].innerHTML = a.apartName;
+        tmp.cells[1].innerHTML = a.area;
+        tmp.cells[2].innerHTML = a.buildAt;
+        tmp.cells[3].innerHTML = a.dealDay;
+        tmp.cells[4].innerHTML = a.dealMonth;
+        tmp.cells[5].innerHTML = a.dealPrice;
+        tmp.cells[6].innerHTML = a.dealYear;
+        tmp.cells[7].innerHTML = a.floor;
+        tmp.cells[8].innerHTML = a.roadName;
+        tmp.cells[9].innerHTML = a.village;
+
+        tbody_str += tmp.outerHTML;
+      }
+
+      document.querySelector(".Main .contents .searchHomeTable table tbody").innerHTML = tbody_str;
+    }
+
+    window.onload = (e) => {
+      // let promptObj = prompt('만든 사람의 이름은 누구일까요?', "이름을 입력해주세요");
+      // console.log(promptObj)
+
+      if (sessionStorage.getItem("isLogIn") == "" || sessionStorage.getItem("isLogIn") == null) window.location = "./login.html";
+
+      if (window.location.hostname == "127.0.0.1")
+        window.location.replace(window.location.protocol + "//" + "localhost:" + window.location.port + window.location.pathname + window.location.search)
+
+      navItems[1].click()
+
+    };
+
+    toggleBtn.addEventListener("click", () => {
+      nav.classList.toggle("active");
+      Main.classList.toggle("active");
+    });
+
+    //console.log(navItems)
+    navItems.forEach((name) => {
+      name.addEventListener("click", function (e) {
+        let pageName = this.getAttribute("sourceHTML");
+
+        if (pageName == null || pageName == "") return;
+
+        navItems[3].querySelector('input[type="checkbox"]').checked = false;
+        navItems.forEach(unclick_li => {
+          unclick_li.classList.remove("clickedNav")
+        })
+        nav_MapContents.forEach(name => {
+          name.classList.remove("clickedNav2")
+        })
+        this.classList.add("clickedNav")
+
+        contentBox.innerHTML = "";
+
+        switch (pageName) {
+          case "dashboard.html":
+            fetch("./contents/dashboard.html")
+              .then((response) => response.text())
+              .then((htmlStr) => {
+                // update content box
+                let frag = document.createRange().createContextualFragment(htmlStr);
+                contentBox.append(frag);
+
+
+                fetch("./contents/dashboardRowClass.html")
+                  .then((response) => response.text())
+                  .then((htmlStr) => {
+                    // update content box
+
+                    let recentView = document.querySelector(".details .recentOrders table");
+                    let recentView_body = recentView.querySelector("tbody");
+
+                    let tmp = document.createElement("tr");
+                    tmp.innerHTML = htmlStr;
+
+                    tbody_str = "";
+
+                    const sellingStatus = ["Selling", "Sold", "Reserved"]
+
+                    for (let i = recentSearched.length - 1; i >= 0; i--) {
+                      tmp.cells[0].innerHTML = recentSearched[i].apartName;
+                      tmp.cells[1].innerHTML = recentSearched[i].dealPrice;
+                      tmp.cells[2].innerHTML = recentSearched[i].buildAt;
+                      tmp.cells[3].innerHTML = recentSearched[i].village;
+
+
+
+                      tmp.cells[4].querySelector("span").classList.add(sellingStatus[Math.floor(Math.random() * 3)]);
+
+                      tbody_str += tmp.outerHTML;
+                    }
+
+                    //console.log(tbody_str)
+
+                    document.querySelector(".details .recentOrders table tbody").innerHTML = tbody_str;
+                  })
+              });
+            break;
+          case "search.html":
+            fetch("./contents/search.html")
+              .then((response) => response.text())
+              .then((htmlStr) => {
+                // update content box
+                let frag = document.createRange().createContextualFragment(htmlStr);
+                contentBox.append(frag);
+                createSelectOptions();
+                aptBtn = document.querySelector(".Main .contents .searchHomeTable .selectboxes #apt-search-btn")
+                aptBtn.addEventListener("click", aptSearchBtnHandler);
+
+                // data insert
+                getAPTList(11110, 201512, "search");
+
+              });
+            break;
+          case "userManage.html":
+            fetch("./contents/userManage.html")
+              .then((response) => response.text())
+              .then((htmlStr1) => {
+                // update content box
+                // HTML part
+                contentBox.innerHTML = htmlStr1
+
+                fetch("./contents/userManage-Account.html")
+                  .then((response) => response.text())
+                  .then((htmlStr2) => {
+                    //     const $userManager = $(".userManager");console.log(localStorage.getItem("userInfos"));console.log(sessionStorage.getItem("isLogIn",""))
+
+                    let curAccount = JSON.parse(sessionStorage.getItem("isLogIn"));
+                    let userInfos = JSON.parse(localStorage.getItem("userInfos"));
+
+
+                    let frag = null;
+
+
+
+                    frag = document.createRange().createContextualFragment(htmlStr2);
+                    frag.querySelector(".info").querySelector(".accountName").querySelector("input[type='text']").value = curAccount.name
+                    frag.querySelector(".info").querySelector(".accountID").querySelector("input[type='text']").value = curAccount.id
+                    frag.querySelector(".info").querySelector(".accountPW").querySelector("input[type='password']").value = curAccount.password
+
+                    let userCnt = 0, adminCnt = 0;
+
+                    if (curAccount.type == "user") {
+                      document.querySelector(".userManager .loginUser").append(frag)
+
+                      userCnt++
+                    }
+                    else {
+                      document.querySelector(".userManager .admins").append(frag)
+                      for (const account of userInfos) {
+                        if (account.id == curAccount.id) continue;
+
+                        frag = document.createRange().createContextualFragment(htmlStr2);
+                        frag.querySelector(".info").querySelector(".accountName").querySelector("input[type='text']").value = account.name
+                        frag.querySelector(".info").querySelector(".accountID").querySelector("input[type='text']").value = account.id
+                        frag.querySelector(".info").querySelector(".accountPW").querySelector("input[type='password']").value = account.password
+
+                        if (account.type == "user") {
+                          document.querySelector(".userManager .loginUser").append(frag)
+                          userCnt++
+                        }
+                        else {
+                          document.querySelector(".userManager .admins").append(frag)
+                          adminCnt++
+                        }
+                      }
+
+                    }
+
+                    if (userCnt > 0) {
+                      document.querySelectorAll(".userManager .userType")[1].style.opacity = "1"
+                      document.querySelector(".userManager .loginUser").style.opacity = "1"
+                    }
+                    if (adminCnt > 0) {
+                      document.querySelectorAll(".userManager .userType")[0].style.opacity = "1"
+                      document.querySelector(".userManager .admins").style.opacity = "1"
+                    }
+
+
+                    userAccounts = document.querySelectorAll(".userManager .info");
+                    userAccounts.forEach(name => {
+                      name.addEventListener('click', function (e) {
+
+                        let name = this.querySelector(".accountName input").value
+                        let id = this.querySelector(".accountID input").value
+                        let pw = this.querySelector(".accountPW input").value
+
+
+                        if (e.target.type == "button") {
+                          // console.log(e.target.value, "가 눌렸습니다.")
+
+                          let i = 0, idx;
+                          for (; i < userInfos.length; i++) {
+                            if (userInfos[i].id == id) {
+                              idx = i
+                              break
+                            }
+                          }
+
+                          if (e.target.value == "수정" && confirm(`${this.querySelector(".accountID input").value}를 수정하시겠습니까?`)) {
+                            userInfos[idx].name = this.querySelector(".accountName input").value
+                            userInfos[idx].pw = this.querySelector(".accountPW input").value
+                            curAccount = userAccounts[idx]
+                          }
+                          else if (e.target.value == "계정삭제" && confirm(`${this.querySelector(".accountID input").value}를 삭제하시겠습니까?`)) {
+                            let tmp = []
+
+                            for (const a of userInfos) {
+                              if (a.id == userInfos[idx].id) continue
+
+                              tmp.push(a)
+                            }
+                            userInfos = tmp
+                            e.target.parentElement.parentElement.parentElement.remove()
+                          }
+
+                          localStorage.setItem("userInfos", JSON.stringify(userInfos))
+                        }
+                      })
+                    })
+
+                  })
+              })
+            break;
+          case "out":
+            sessionStorage.setItem("isLogIn", null)
+            sessionStorage.setItem("loginId", null);
+            window.location.replace("./login.html")
+            break;
+        }
+      });
+    });
+
+
+    nav_MapContents.forEach(name => {
+      name.addEventListener('click', function (e) {
+        navItems.forEach(unclick_li => {
+          unclick_li.classList.remove("clickedNav")
+        })
+        nav_MapContents.forEach(name => {
+          name.classList.remove("clickedNav2")
+        })
+        this.classList.add("clickedNav2")
+
+
+
+        let pageName = this.getAttribute("sourceHTML");
+
+        // update content box
+        fetch("./contents/map.html")
+          .then((response) => response.text())
+          .then((htmlStr) => {
+            // update content box
+            // HTML part
+            contentBox.innerHTML = htmlStr
+            createSelectOptions();
+            mapTable = document.querySelector(".content .Main .contents .mapBox .mapConainer .mapTable-Container .customTable")
+            aptBtn = document.querySelector(".content .Main .contents .mapBox .selectboxes #apt-search-btn")
+
+            switch (pageName) {
+              case "Map1":
+                aptBtn.addEventListener('click', aptSearchBtnHandler2)
+                break;
+              case "Map2":
+                aptBtn.addEventListener('click', aptSearchBtnHandler3)
+                break
+            }
+
+            // 주소-좌표 변환 객체를 생성합니다
+            geocoder = new kakao.maps.services.Geocoder();
+
+            // load Map part
+            loadMap()
+
+
+
+
+            // data insert
+
+
+
+
+
+
+          })
+      })
+    })
+
+  </script>
+</body>
+
+</html>

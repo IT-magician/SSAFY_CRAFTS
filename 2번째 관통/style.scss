@@ -1,0 +1,1172 @@
+$icon-size: 90px;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 400px;
+    background-color: #fff;
+    display: inline;
+    overflow-x: auto;
+    // overflow-x: hidden;
+    // min-width: 600vw;
+}
+
+
+
+.loading-container {
+
+    display: none;
+
+
+    position: fixed;
+    background: #222;
+    z-index: 300;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    transition: 1s;
+
+
+    .loading-card {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+
+        .percent {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            transform: scale(2.5);
+            opacity: 1;
+    
+    
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+    
+                to {
+                    opacity: 1;
+                }
+    
+            }
+    
+            @keyframes fadeIn2 {
+                0% {
+                    opacity: 0;
+                }
+    
+                50% {
+                    opacity: 1;
+                }
+    
+                100% {
+                    opacity: 0;
+                }
+            }
+    
+            @keyframes animateDot {
+                from {
+                    transform: rotate(0deg);
+                }
+    
+                to {
+                    transform: rotate(calc(3.6deg *var(--num)));
+                }
+            }
+    
+    
+            .number {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+                animation: fadeIn 1s linear forwards;
+    
+                h2 {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: #fff;
+                    font: 700;
+                    font-size: 2.5em;
+
+                    &::after{
+                        content: '%';
+                        font-weight: 300;
+                        font-size: 0.5em;
+                        color: #fff;
+                    }
+                }
+    
+                p {
+                    font-weight: 300;
+                    font-size: 0.25em;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    color: rgba(#ffffff, 0.75);
+                }
+            }
+    
+            .dot {
+                position: absolute;
+                inset: 5px;
+                z-index: 10;
+                transform: rotate(calc(3.6deg *var(--num))); // 360deg / 100 = 3.6deg
+    
+    
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: -5px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 10px;
+                    height: 10px;
+                    background: var(--clr);
+                    border-radius: 50%;
+                    box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr);
+    
+                }
+            }
+    
+            svg {
+                position: relative;
+                width: 150px;
+                height: 150px;
+                transform: rotate(270deg);
+    
+                circle {
+                    width: 100%;
+                    height: 100%;
+                    fill: transparent;
+                    stroke-width: 2;
+                    stroke: #191919;
+                    transform: translate(5px, 5px);
+    
+    
+                    &:nth-child(2),
+                    &:nth-child(3) {
+                        stroke: var(--clr);
+                        stroke-dasharray: 440;
+                        stroke-dashoffset: calc(440 - (440 * var(--num)/100));
+                        opacity: 0;
+    
+                    }
+    
+                    &:nth-child(3) {
+                        animation: fadeIn 1s linear forwards;
+                    }
+    
+                    &:nth-child(3) {
+                        z-index: 10;
+                        animation: fadeIn2 2s linear infinite;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+
+
+.markerBx{
+    position: relative;
+    min-width: 50px;
+    min-height: 150px;
+}
+
+.nav {
+    position: fixed;
+    background: #4E92BA;
+    inset: 20px;
+    width: 80px;
+    border-left: 10px solid #4E92BA;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 15px 15px 25px rgba($color: #000000, $alpha: 0.25);
+    z-index: 100;
+
+    transition: 0.5s;
+
+    .toggle {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+        bottom: 15px;
+        right: 15px;
+        border-radius: 50vh;
+        cursor: pointer;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // box-shadow: 5px 5px rgba($color: #000000, $alpha: 0.055);
+    }
+
+    .toggle span {
+        position: absolute;
+        width: 25px;
+        height: 5px;
+        background-color: #4E92BA;
+        transition: .5s;
+    }
+
+    .toggle span:nth-child(1) {
+        transform: translateY(-10px);
+    }
+
+    .toggle span:nth-child(3) {
+        transform: translateY(10px);
+    }
+
+    ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+
+
+        li {
+            position: relative;
+            list-style: none;
+            width: 100%;
+            margin: 10px 0 10px 0;
+            cursor: pointer;
+
+            // background: #fff;
+
+
+
+            div {
+                position: relative;
+                // display: block;
+                width: 100%;
+                display: flex;
+                text-decoration: none;
+
+                i,
+                span {
+                    color: #5EF7F2;
+                }
+
+                i {
+                    position: relative;
+                    // display: block;
+                    min-width: 60px;
+                    height: 60px;
+                    line-height: 65px;
+                    text-align: center;
+
+                    font-size: 1.75em;
+
+                    // transform: translateY(-0.5vh);
+                }
+
+                .title {
+                    position: relative;
+                    // display: block;
+                    // padding: 0 10px;
+                    padding-left: 10px;
+                    // height: 60px;
+                    line-height: 60px;
+                    // text-align: start;
+                    white-space: nowrap;
+                }
+            }
+
+        }
+
+        li:first-child {
+            cursor: default;
+        }
+    }
+
+    .tab {
+        padding-top: 15px;
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        overflow: hidden;
+
+        &-label div {
+            cursor: pointer;
+            margin-left: 0;
+        }
+
+        transition: 1s;
+
+        &-content {
+            width: 100%;
+            max-height: 0;
+            padding: 0 1em;
+            transition: .5s;
+            margin-top: 10px;
+
+            >* {
+                transition: .5s;
+            }
+
+        }
+
+        &-content:hover {
+            background: rgba(255, 255, 255, 0.5);
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            margin: 10px 0 10px 0;
+            // transform: translateX(-10px);
+
+            >* {
+                transform: translateX(-15px);
+            }
+        }
+
+        // :checked
+        input[type="checkbox"]:checked {
+            ~.tab-content {
+                max-height: 100vh;
+                padding: 1em;
+            }
+        }
+
+        &:has(input[type="checkbox"]:checked) {
+            & {
+                min-height: 300px;
+            }
+
+            &:hover {
+                background: none;
+            }
+        }
+
+    }
+
+    .clickedNav {
+        background: #fff;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    .clickedNav2 {
+        background: #8fd3f4;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+
+        >* {
+            transform: translateX(-15px);
+        }
+    }
+
+    ul li:hover {
+        background: rgba(255, 255, 255, 0.322);
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+
+    ul li:first-child {
+        top: 20px;
+        margin-bottom: 50px;
+        background: none;
+    }
+}
+
+.nav.active {
+    width: 250px;
+    border-radius: 20px;
+
+    .toggle span:nth-child(1) {
+        transform: translateY(0) rotate(405deg); // 360 + 45
+    }
+
+    .toggle span:nth-child(2) {
+        transform: translateY(-50px);
+    }
+
+    .toggle span:nth-child(3) {
+        transform: translateY(0) rotate(-405deg);
+    }
+
+    .toggle span:nth-child(4) {
+        transform: translateY(50px);
+    }
+}
+
+
+
+
+$x1: 160px;
+
+.Main {
+    position: absolute;
+    width: calc(100% - 160px);
+    left: 140px;
+    min-height: 100vh;
+
+    transition: 0.5s;
+
+
+    .contents {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .userManager {
+            padding: 10px;
+            justify-content: center;
+
+            position: absolute;
+            height: calc(100% - 200px);
+            width: 100%;
+
+            // background: #FAF752; // layout 확인용
+
+            .userType {
+                font-weight: 600;
+                text-align: center;
+                margin-top: 10px;
+                opacity: 0;
+            }
+
+            .admins,
+            .loginUser {
+                position: absolute;
+                width: 100%;
+                margin: 5px;
+                padding: 5px;
+
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                opacity: 0;
+
+                overflow-y: auto;
+
+                box-shadow: 5px 0px 15px rgba($color: #000000, $alpha: 0.05);
+
+                .account .accountPicture {
+                    order: 0;
+                }
+            }
+
+            .admins {
+                position: absolute;
+                max-height: calc(40% - 25px); // for 높이 비율을 위한것임. 위치 속성은 다시 relative로 overriding할것임
+                position: relative;
+                // background: #43B0D9; // layout 확인용
+
+            }
+
+            .loginUser {
+                position: absolute;
+                min-height: calc(40% - 25px);
+                height: calc(60% - 25px); // for 높이 비율을 위한것임. 위치 속성은 다시 relative로 overriding할것임
+                position: relative;
+
+                // background: #71ff9c; // layout 확인용
+            }
+
+
+            .account {
+                position: absolute;
+                width: 45%;
+                min-width: 400px;
+                margin: 0 5px 0 5px;
+                min-height: 240px;
+                border-radius: 5px;
+                box-shadow: 10px 0px 15px rgba($color: #000000, $alpha: 0.25);
+
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 15px;
+
+                font-weight: 600;
+
+                .accountPicture,
+                .info {
+                    height: 100%;
+
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .accountPicture {
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+
+                    img {
+                        min-width: 70%;
+                        padding-left: 15px;
+                        padding-bottom: 75px;
+                    }
+                    h2{
+                        margin-top: 5px;
+                        font-size: 1.0rem;
+                    }
+                }
+
+                .info {
+                    position: relative;
+                    width: 300px;
+                    padding: 10px;
+
+                    .accountOKApt {
+                        position: relative;
+                        width: 100%;
+                        display: flex;
+                        justify-content: end;
+
+                        // background: red;
+
+                        input[type="button"]:first-child {
+                            margin-right: 15px;
+                        }
+
+                        input[type="button"] {
+                            width: 75px;
+                            height: 25px;
+                            margin-right: 5px;
+                            margin-bottom: 10px;
+
+                            font-weight: 600;
+                            background: #2f77d628;
+                            border: none;
+                            border-radius: 5px;
+                        }
+
+                        input[type="button"]:hover {
+                            color: #fff;
+                        }
+                    }
+
+                    .accountType,
+                    .accountID,
+                    .accountPW,
+                    .accountName,
+                    .accountAddr,
+                    .accoutPhone {
+                        display: flex;
+                        margin: 5px;
+
+                        span {
+                            margin-right: 10px;
+
+                            width: 100px;
+                        }
+
+                        input[type="text"],
+                        input[type="number"],
+                        input[type="password"] {
+                            width: calc(100% - 100px);
+                            height: 25px;
+                            background: #43b0d9;
+                            border: none;
+                            border-radius: 5px;
+
+                            text-align: center;
+                            color: #fff;
+                        }
+                    }
+                    .accountID input[type="text"]{
+                        background: #4e92ba4f;
+                    }
+                }
+
+            }
+        }
+
+        .selectboxes {
+            padding: 20px;
+
+            #apt-search-btn {
+                font-weight: 600;
+            }
+
+            #apt-search-btn:hover {
+                color: #fff;
+                cursor: pointer;
+            }
+
+            select {
+                margin: 0 10px 0 10px;
+            }
+
+            input {
+                width: 100px;
+                height: 25px;
+                background: #43B0D9;
+                border: none;
+                border-radius: 10px;
+            }
+        }
+
+        .searchHomeTable {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+            margin-top: 10px; // 적당히 margin을 주면, border-bottom의 두께도 일정해짐, +그 이상 이하를 주면 이상하게 바뀜
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+
+
+            thead td {
+                font-weight: 600;
+                cursor: pointer;
+            }
+
+            tbody {
+                tr {
+                    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.25);
+
+                    td:nth-child(6)::before {
+                        content: '₩ ';
+                    }
+                }
+
+                tr:hover {
+                    background: #43B0D9;
+                    color: #fff;
+                }
+            }
+
+            tr td:not(:first-child) {
+                text-align: end;
+            }
+
+            tr td:nth-child(2) {
+                text-align: center;
+            }
+
+            tr td {
+                padding: 0 10px;
+            }
+
+
+            tr:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .mapBox {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 85%;
+            width: 100%;
+
+
+            .mapConainer {
+                position: relative;
+                width: 100%;
+                height: 80%;
+                margin-top: 25px;
+
+                display: flex;
+
+.mapTable-Container{
+    opacity: 0;
+}
+
+                #map,
+                .mapTable {
+                    position: relative;
+                    height: calc(100% - 10px);
+                }
+
+                #map{
+                    width: calc(70% - 25px);
+                }
+                .mapTable-Container{
+                    width: 30%;
+                    margin-left: 25px;
+
+                    
+
+                    .customTable{
+                        position: relative;
+                        margin-top: 15px;
+                        padding: 10px;
+                        width: 100%;
+                        height: calc(100% - 6em);
+                        overflow-y: scroll;
+
+                        &::-webkit-scrollbar{
+                            display: none;
+                        }
+
+                        font-size: .8em;
+
+                        .home{
+                            margin: 15px;
+                            padding: 5px;
+                            box-shadow: 1px 0 10px rgba($color: #000000, $alpha: 0.05);
+                            cursor: pointer;
+
+                            .customTable-row{
+                                position: relative;
+                                display: flex;
+                                flex-wrap: wrap;
+                                // justify-content: space-evenly;
+
+
+                                .customTable-col{
+                                    margin: 10px;
+                                    span{
+                                        font-weight: 600;
+                                    }
+
+                                    .apartDate::after{
+                                        content: ' ㎡';
+                                        font-size: 0.8em;
+                                    }
+                                }
+                            }
+
+                            .latInfo{
+                                display: none;
+                            }
+
+
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    .searchHome {
+        display: inline-block;
+        margin: auto;
+        padding: 5px;
+        cursor: pointer;
+
+        img {
+            width: 170px;
+        }
+
+        .buildingName {
+            font-weight: 400;
+            color: #A1A1A1;
+        }
+
+        .buildingPrice {
+            font-weight: 600;
+            color: #525252;
+            ;
+        }
+
+        .buildingPrice::before {
+            content: '₩ ';
+        }
+
+        .buildingPos {
+            color: #626262;
+            ;
+        }
+    }
+
+    .header {
+        // position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 10px;
+        border-bottom: 2.5px solid rgba($color: #000000, $alpha: 0.05);
+        box-shadow: 0px 2.5px rgba($color: #4DF8F8, $alpha: 0.08);
+
+        h2 {
+            order: 1;
+            text-transform: uppercase;
+        }
+
+        // min-height: 100vh;
+        .findBox {
+            // position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            margin: 0 10px;
+            order: 2;
+
+            i {
+                // position: relative;
+                cursor: pointer;
+            }
+
+            .search {
+                // position: relative;
+                border: none;
+                border-radius: 50px;
+                margin-right: 10px;
+                height: 25px;
+                min-width: 25%;
+                padding: 0 15px;
+                background: #43b1d9c7;
+                color: #fff;
+
+                transition: 0.5s;
+                width: 250px;
+            }
+
+            input::placeholder {
+                color: #fff;
+                display: flex;
+                text-align: center;
+            }
+
+            .search:focus {
+                width: 100%;
+                height: 30px;
+                text-align: center;
+                background: #43b1d9;
+                outline: none;
+            }
+        }
+
+        .user {
+            // position: relative;
+            order: 3;
+
+            .userImg {
+                position: relative;
+                height: $icon-size;
+                width: $icon-size;
+                overflow: hidden;
+                border-radius: 50%;
+                margin: 5px;
+
+                img {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+
+            .userName {
+                margin: 5px;
+                font-size: 0.75em;
+                text-align: center;
+            }
+        }
+    }
+
+    .orderCnts {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); // 1fr * 4 = 1:1:1:1
+        gap: 50px;
+
+        .group {
+            position: relative;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 7px 25px rgba($color: #217474, $alpha: 0.08);
+            display: flex;
+            justify-content: space-between;
+
+            .orderName {
+                font-weight: 500;
+                font-size: 1.5em;
+                color: #43B0D9;
+            }
+
+            .orderNumber {
+                color: gray;
+            }
+
+            .orderNumber::after {
+                content: ' 호수  \A판매됨';
+                white-space: pre;
+                /* <pre>와 같은 기능을 합니다. */
+            }
+
+            .ico {
+                position: relative;
+                height: calc($icon-size/2);
+                width: calc($icon-size/2);
+                overflow: hidden;
+                border-radius: 50%;
+                margin: 5px;
+
+                img {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .group:hover {
+            background: #43B0D9;
+            cursor: pointer;
+
+            .orderName,
+            .orderNumber {
+                color: #fff;
+            }
+        }
+    }
+
+    .details {
+        $detailBox-height: 500px;
+
+
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 2fr 1fr; // 2:1
+        gap: 20px;
+
+        .recentOrders {
+            position: relative;
+            display: grid; // grid의 default는 grid-template-row임. 그리고 얘때문에 각 width은 100%로 동일하게 할당됨
+            grid-template-rows: 1fr 5fr; // 세로방향으로 1:5비율
+            border-radius: 25px;
+            height: $detailBox-height;
+            padding: 25px;
+            box-shadow: 0 7px 25px rgba($color: #000000, $alpha: 0.05); // 두깨가 y축 혹은 x축보다 크면, 4방면으로 그림자 효과를 만들 수 있음
+            overflow-y: scroll;
+
+
+            .detailHeader {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 10px;
+
+                .btn {
+                    text-decoration: none;
+                    background: #43B0D9;
+                    padding: 15px;
+                    color: #fff;
+                    border-radius: 10px;
+                }
+            }
+
+            table {
+                // width: 100%;
+                border-collapse: collapse;
+                margin-top: 10px; // 적당히 margin을 주면, border-bottom의 두께도 일정해짐, +그 이상 이하를 주면 이상하게 바뀜
+
+                thead td {
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+
+                tbody {
+                    tr {
+                        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.25);
+
+                        td:nth-child(2)::before {
+                            content: '₩ ';
+                        }
+                    }
+
+                    tr:hover {
+                        background: #43B0D9;
+                        color: #fff;
+                    }
+                }
+
+                tr td:not(:first-child) {
+                    text-align: end;
+                }
+
+                tr td:nth-child(2) {
+                    text-align: center;
+                }
+
+                tr td {
+                    padding: 0 10px;
+                }
+
+
+                tr:last-child {
+                    border-bottom: none;
+                }
+
+                .Status {
+                    padding: 2px 4px;
+                    font-size: 14px;
+                    border-radius: 4px;
+                    color: #fff;
+                    background: #71ff9c;
+                }
+
+                .Selling {
+                    background: #71ff9c;
+                }
+
+                .Selling::before {
+                    content: "판매중";
+                }
+
+                .Sold {
+                    background: #FA1A0B;
+                }
+
+                .Sold::before {
+                    content: "판매완료";
+                }
+
+                .Reserved {
+                    background: #FAF752;
+                }
+
+                .Reserved::before {
+                    content: "가계약됨";
+                }
+            }
+        }
+
+        .Ordering {
+            position: relative;
+            display: grid; // grid의 default는 grid-template-row인듯. 그리고 얘때문에 각 width은 100%로 동일하게 할당됨
+            grid-template-rows: 1fr 5fr; // 세로방향으로 1:5비율
+            border-radius: 25px;
+            height: $detailBox-height;
+            padding: 25px;
+            box-shadow: 0 7px 25px rgba($color: #000000, $alpha: 0.05); // 두깨가 y축 혹은 x축보다 크면, 4방면으로 그림자 효과를 만들 수 있음
+            overflow-y: scroll;
+
+
+            .imgBox {
+                $img-size: 70px;
+
+                position: relative;
+                width: $img-size;
+                height: $img-size;
+                overflow: hidden;
+                border-radius: 50%;
+                margin: 10px;
+
+                img {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+
+            tr:hover {
+                background: #43B0D9;
+                color: #fff;
+            }
+        }
+
+        .recentOrders::-webkit-scrollbar,
+        .Ordering::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+
+.Main.active {
+    width: calc(100% - 300px);
+    left: 290px;
+}
+
+
+
+@media only screen and (max-width: 1005px) {
+
+    .Main {
+        .orderCnts {
+            grid-template-columns: none;
+        }
+
+        .Ordering table tr td,
+        .Ordering .detailHeader {
+            // display: table-row;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            flex-direction: column;
+        }
+    }
+}
+
+
+@media only screen and (max-width:
+
+    /*786*/
+    1200px) {
+    .Main {
+        .orderCnts {
+            grid-template-columns: repeat(2, 1fr);
+            // grid-template-rows: 1fr 1fr; // 2:1
+        }
+
+
+        .details .recentOrders table tbody tr td:last-child {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            padding: 5px;
+        }
+    }
+}
+
+@media only screen and (max-width: 786px) {
+
+    .Main .details {
+        grid-template-columns: repeat(1, 1fr);
+        // grid-template-rows: 1fr 1fr; // 2:1
+    }
+}
+
+@media only screen and (max-width: 486px) {
+
+    .Main .orderCnts {
+        grid-template-columns: none;
+        grid-template-rows: 1fr; // 2:1
+    }
+}
