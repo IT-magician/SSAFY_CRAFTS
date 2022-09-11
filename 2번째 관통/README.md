@@ -3,6 +3,9 @@
 - 알림 : XML이 요구되는 페이지가 동작안하는건 다음과 같은 이유임.  
          1. 하루 허용 사용량 초과 2. 공공데이터 service key만료  
          xml을 받는 내용은 apt.js파일의 url부분에 있음. 2개의 url이 있을텐데, 첫번째는 select box용임. 두번째일거야.
+         
+         
+         KoHKDfRy7ikARry4tmUsUR40977GjgeRnIE6kdRYjsiueTVkBtpETT0ZKlqHYUH%2BPDUKt%2B4I8uym%2FO3LvuAbZA%3D%3D
 
  # 제작자
  나, 안소희님
