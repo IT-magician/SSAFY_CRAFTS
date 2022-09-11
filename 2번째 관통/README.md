@@ -52,7 +52,7 @@
 ![그림11.png](./craft_img/그림11.png)
 
 ### 페이지를 교체하는 건, 이동을 하지 않고 화면에서 별도의 교체영역에서 내용만 교체하도록 만듬, 그 영역을 html에서 contents class로 지정함.
-![그림.png](./craft_img/그림.png)
+![그림14.png](./craft_img/그림14.png)
 
 ### Navbar의 맨 하단 오른쪽의 hamburgur버튼 클릭시, Navbar의 width가 커짐. 반응형 웹에 맞게 제작했기 때문에, Navbar가 아닌 영역에서도 자동으로 레이아웃이 맞춰지도록 설계하였음.
 ![그림8.png](./craft_img/그림8.png)
