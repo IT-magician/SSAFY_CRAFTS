@@ -59,7 +59,7 @@
 
 ### Navbar Item의 Dashboard에서 Recent View가 의미하는 것
 Map탭. 사용자가 관심이 있어서, 오른쪽 상자들을 클릭하면 History로 남게됨. 이걸 Recent Views에 표시하도록 만듬. 판매상태는 Random함수를 사용, JAVASCRIPT로 HTML Class에 "Status"에서 "Status Selling", "Status Sold" 등을 추가하면, CSS에서 '판매중' 등을 표시하도록 만듬.
-(???라고?, readme에 있는  노란색 상자를 말하는 거임. 그걸 클릭하면 history로 남겨서, recent view로 만듬)
+(???라고?, readme에 있는 그림의 노란색 상자를 말하는 거임. 그걸 클릭하면 history로 남겨서, recent view로 만듬)
 
 ### CSS 관련
 사용자에게 표시하는 부분은 최대한 CSS로 구현하였음. 예를 들어 Navbar의 width를 늘린다던지, 웹페이지의 내용을 업데이트 할 때 반복되는 글자이면 Sold, Active, Clicked 등의 클래스를 JS로 추가하기만 하면, CSS에서 작업하도록 만듬. 즉, JS는 CSS에게 이벤트가 발생했다는 것을 알려주기만 하고, 텍스트, div의 width 변경 등은 CSS에서 담당함.
