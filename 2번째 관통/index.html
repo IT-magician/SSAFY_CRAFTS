@@ -222,7 +222,7 @@
       // console.log(promptObj)
 
       if (sessionStorage.getItem("isLogIn") == "" || sessionStorage.getItem("isLogIn") == null) window.location = "./login.html";
-
+console(window.location.hostname == "127.0.0.1", window.location.hostname)
       if (window.location.hostname == "127.0.0.1")
         window.location.replace(window.location.protocol + "//" + "localhost:" + window.location.port + window.location.pathname + window.location.search)
 
