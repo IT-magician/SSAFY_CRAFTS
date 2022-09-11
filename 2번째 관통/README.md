@@ -58,7 +58,7 @@
 [그림]
 
 ### Navbar Item의 Dashboard에서 Recent View가 의미하는 것
-Map탭. 사용자가 관심이 있어서, 오른쪽 상자들을 클릭하면 History로 남게됨. 이걸 Recent Views에 표시하도록 만듬. 판매상태는 Random함수를 사용, JAVASCRIPT로 HTML Class에 "Status"에서 "Status Selling", "Status Sold" 등을 추가하면, CSS에서 '판매중' 등을 표시하도록 만듬. <-- css의 override 및 우선순위(detail할 수록 우선순위가 커지는 거)를 이용함 
+Map탭. 사용자가 관심이 있어서, 오른쪽 상자들을 클릭하면 History로 남게됨. 이걸 Recent Views에 표시하도록 만듬. 판매상태는 Random함수를 사용, JAVASCRIPT로 HTML Class에 "Status"에서 "Status Selling", "Status Sold" 등을 추가하면, CSS에서 '판매중' 등을 표시하도록 만듬. <-- css의 override 및 우선순위(detail할 수록 우선순위가 커지는 거)를 이용함  
 (???라고?, readme에 있는 그림의 노란색 상자를 말하는 거임. 그걸 클릭하면 history로 남겨서, recent view로 만듬)
 
 ### CSS 관련
