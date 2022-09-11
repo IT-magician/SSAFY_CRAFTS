@@ -78,7 +78,7 @@ function login() {
 
     let id = document.querySelector("#ID_BOX1").value;
     let password = document.querySelector("#PASSWD_BOX1").value;
-
+console.log(userInfos)
     const foundUser_id = userInfos.find(userInfo => {
         return userInfo.id === id
     });
