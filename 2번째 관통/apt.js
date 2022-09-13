@@ -96,7 +96,6 @@ const createSelectOptions = () => {
 
 const getAPTList = async (lawdCD, dealYmd, boardtype,defaultUrl = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?LAWD_CD=") => {
     const serviceKey = "KoHKDfRy7ikARry4tmUsUR40977GjgeRnIE6kdRYjsiueTVkBtpETT0ZKlqHYUH%2BPDUKt%2B4I8uym%2FO3LvuAbZA%3D%3D";
-    let redirecURL // for 'https' protocol
 
     document.querySelector(".loading-container").style.display = "flex";
     document.querySelector(".loading-container .loading-card .percent .number h2").innerHTML = "다운로드 완료"
@@ -107,14 +106,7 @@ const getAPTList = async (lawdCD, dealYmd, boardtype,defaultUrl = "http://openap
     let percent = -1
 
     while(i <= Math.min(limit, 5)){
-        if (window.location.protocol == "https:"){
-            redirecURL = "https://proxy.cors.sh/"
-            console.log("https프로토콜에 의해 proxy서버로 redirect후 xml을 받아옵니다.")
-        }
-        else
-            redirecURL = ""
-        
-        const url = `${redirecURL}${defaultUrl}${lawdCD}&DEAL_YMD=${dealYmd}&serviceKey=${serviceKey}&pageNo=${i}`;
+        const url = `${defaultUrl}${lawdCD}&DEAL_YMD=${dealYmd}&serviceKey=${serviceKey}&pageNo=${i}`;
         
         
         await fetch(url)
