@@ -109,8 +109,10 @@ const getAPTList = async (lawdCD, dealYmd, boardtype,defaultUrl = "http://openap
     while(i <= Math.min(limit, 5)){
         const url = `${defaultUrl}${lawdCD}&DEAL_YMD=${dealYmd}&serviceKey=${serviceKey}&pageNo=${i}`;
         
-        if (window.location.protocol == "https:")
+        if (window.location.protocol == "https:"){
             url = redirecURL + url
+            console.log("https프로토콜에 의해 proxy서버로 redirect후 xml을 받아옵니다.")
+        }
         
         await fetch(url)
         .then(response => response.text())
