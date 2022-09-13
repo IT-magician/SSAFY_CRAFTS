@@ -4,13 +4,11 @@
          1. 하루 허용 사용량 초과 2. 공공데이터 service key만료  
          xml을 받는 내용은 apt.js파일의 url부분에 있음. 2개의 url이 있을텐데, 첫번째는 select box용임. 두번째일거야.
          
-         .... 걍 직접 호스팅해야할듯.. xml은 https프로토콜을 지원을 안하고, 카카오 맵 api는 localhost로만 쓰기로 약속되어있어서 어떻게 안됨.. vs code에서 live server로 실행해서 확인해야할듯..
+         .... 걍 직접 호스팅해야할듯.. 내가 공공데이터포털에서 신청한 xml은 https프로토콜을 지원을 안함(만약 이걸 할거면, 다른서버에서 받아와서 전달하는 redirect를 써야할듯...) vs code에서 live server로 실행해서 확인해야할듯..  
          
          
-![그림15](./craft_img/그림15.PNG)
-         
-         
-         KoHKDfRy7ikARry4tmUsUR40977GjgeRnIE6kdRYjsiueTVkBtpETT0ZKlqHYUH%2BPDUKt%2B4I8uym%2FO3LvuAbZA%3D%3D
+![그림15](./craft_img/그림15.PNG)  
+
 
  # 제작자
  나, 안소희님
