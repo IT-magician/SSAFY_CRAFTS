@@ -96,6 +96,7 @@ const createSelectOptions = () => {
 
 const getAPTList = async (lawdCD, dealYmd, boardtype,defaultUrl = "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev?LAWD_CD=") => {
     const serviceKey = "KoHKDfRy7ikARry4tmUsUR40977GjgeRnIE6kdRYjsiueTVkBtpETT0ZKlqHYUH%2BPDUKt%2B4I8uym%2FO3LvuAbZA%3D%3D";
+    const redirecURL = "https://cors-anywhere.herokuapp.com/" // for 'https' protocol
 
     document.querySelector(".loading-container").style.display = "flex";
     document.querySelector(".loading-container .loading-card .percent .number h2").innerHTML = "다운로드 완료"
@@ -107,6 +108,10 @@ const getAPTList = async (lawdCD, dealYmd, boardtype,defaultUrl = "http://openap
 
     while(i <= Math.min(limit, 5)){
         const url = `${defaultUrl}${lawdCD}&DEAL_YMD=${dealYmd}&serviceKey=${serviceKey}&pageNo=${i}`;
+        
+        if (window.location.protocol == "https:")
+            url = redirecURL + url
+        
         await fetch(url)
         .then(response => response.text())
         .then(result => {
