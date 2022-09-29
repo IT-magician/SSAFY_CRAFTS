@@ -86,7 +86,7 @@ function setFavorBox(boxIdx, data) {
     sel1.forEach(function (name) {
       name.addEventListener("click", function (event) {
     	  if (event.target.getAttribute("type")=="checkbox"){
-              this.querySelector("input").checked = false
+          this.querySelector("input").checked = this.querySelector("input").checked // read only
               return
           }
     	  
@@ -110,7 +110,7 @@ function setFavorBox(boxIdx, data) {
     sel2.forEach(function (name) {
       name.addEventListener("click", function (event) {
     	  if (event.target.getAttribute("type")=="checkbox"){
-              this.querySelector("input").checked = false
+              this.querySelector("input").checked = this.querySelector("input").checked // read only
               return
           }
 
