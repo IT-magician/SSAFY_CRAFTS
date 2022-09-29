@@ -11,6 +11,7 @@ $box-height: 40px;
         top:0;
         left: 0;
         transition: .5s ease-in;
+        overflow-y: auto;
     
     
         &:has(&-open:checked){
