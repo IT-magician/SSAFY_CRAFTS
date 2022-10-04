@@ -1,0 +1,183 @@
+*{
+    box-sizing: border-box;
+}
+
+$box-width: 120px;
+$box-height: 40px;
+
+.userFavor{
+    &-setting{
+        position: fixed;
+        top:0;
+        left: 0;
+        width: 0;
+        height: 0;
+        transition: .1s ease-in;
+    
+    
+        &:has(&-open:checked){
+            width: 100%;
+            height: 100vh;
+            background: #434750;
+            z-index: 10;
+            overflow-y: auto;
+
+            .opener-icon::before{
+                position: relative;
+                left: 15px;
+                top: 15px;
+                content: '\f057';
+                font-family: "FontAwesome";
+                font-size: 2.0rem;
+                color: rgb(133, 133, 133);
+                cursor: pointer;
+            }
+        }
+
+        .opener-icon::before{
+            position: relative;
+            left: 15px;
+            top: 15px;
+            content: '\f08b';
+            font-family: "FontAwesome";
+            font-size: 2.0rem;
+            color: #434750;
+            cursor: pointer;
+        }
+        &-open{
+            display: none;
+        }
+    }
+
+    input:not(input:checked) ~ &-selectBox{
+        display: none;
+    }
+
+    &-selectBox{
+        position: relative;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 25px;
+
+        ul{
+            position: relative;
+            transform: skewY(-15deg);
+            transition: 10s;
+
+            .active >label> .icon{
+                background: var(--clr);
+            }
+            
+            li{
+                position: relative;
+                list-style: none;
+                width: $box-width;
+                background: #3e3f46;
+                height: 60px;
+                transition: 0.5s;
+                z-index: var(--i);
+                margin: 0 30px 0 30px;
+                color: #fff;
+
+
+                &:has(input:checked) {
+                    .icon::before,
+                    .label{
+                        color: #5be7a9;
+                    }
+
+                    
+                    .icon::before{
+                        //https://fontawesome.com/docs/web/style/style-cheatsheet
+                        font-family: "Font Awesome 6 Free";
+                        content: "\f058";
+                    }
+                }
+
+                .icon::before{
+                    //https://fontawesome.com/docs/web/style/style-cheatsheet
+                    font-family: "Font Awesome 6 Free";
+                     content: "\f111";
+                }
+                
+                label {
+                    // width: $box-width;
+                    // height: 100%;
+                    cursor: pointer;
+
+
+                    .icon,
+                    .label,
+                    .top {
+                        content: '';
+                        position: absolute;
+                        background: #3e3f46;
+                        filter: brightness(.7);
+                    }
+
+                    .icon {
+                        top: 0;
+                        left: -$box-height;
+                        width: $box-height;
+                        height: 100%;
+                        transform-origin: right;
+                        transform: skewY(45deg);
+                        background: #40414b;
+                    }
+
+                    .icon,
+                    .label {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    .top {
+                        width: 100%;
+                        height: $box-height;
+                        left: calc($box-height/2 * -1);
+                        top: -$box-height;
+                        background: #404149;
+                        transform-origin: right;
+                        transform: skewX(45deg);
+                    }
+
+                    .label{
+                        width: 100%;
+                        height: 100%;
+                        background: #44464e;
+                        // user-select: none;
+                    }
+
+                    &:hover{
+                        transform: translateX(-50px);
+                        .top,
+                        .icon,
+                        .label{
+                            background: var(--clr);
+                        }
+
+                        .top{
+                            filter: brightness(0.7);
+                        }
+                        .icon{
+                            filter: brightness(0.5);
+                        }
+                        
+                    }
+                }
+
+                input[type="checkbox"]{
+                    display: none;
+                }
+
+
+                &:hover{
+                    transform: translateX(-50px);
+                }
+            }
+        }
+    }
+}
