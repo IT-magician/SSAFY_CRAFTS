@@ -9,7 +9,7 @@
 *   앞에서 말한걸 구현하기 위해 추가적으로 했던건, 만약 db에 내용이 비어있는 경우 공공데이터 포털의 xml을 파싱하여 db에 삽입후 데이터를 json string형태로 전달하도록 만듬. 그걸 js로 parse하여 table 및 지도에 표시했음.  아, 그리고 내가 담당하는 부분은 db table이 없으면, servlet의 init함수 단계에서 DDL을 사용해서 자동으로 생성하도록 만듬('선호도 조사 부분'도 db를 사용하고, 아파트 관련이라서 앞에서 말한 기능에서 db를 생성하는 부분에 같이 넣음).  
 *  javascript와 servlet끼리 통신을 하기 위해 dto에서 toString을 만들 때, json stringfy된 결과로 만들었음. 그래서 arrayList에서 toString으로 HTTP Payload에 넣어서 javascript에 전달을 하였음.  
 *   '선호도 조사 부분'은 로그인 했을 때 사용자 이름을 클릭해서 보여주도록 만듬. 그렇게 해서 사용자 정보가 있어야 가능해야하는 제약조건 만족과 사용자 개인정보 보호까지 하도록 만듬.  
-이클립스 프로젝트의 package에서 'com.ssafy.apartment.*'은 내가 다 작성한것임
+*  이클립스 프로젝트의 package에서 'com.ssafy.apartment.*'은 내가 다 작성한것임(프론트 포함)
 
 
 
