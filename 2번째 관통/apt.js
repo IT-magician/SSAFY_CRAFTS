@@ -107,7 +107,7 @@ const getAPTList = async (lawdCD, dealYmd, boardtype,defaultUrl = "http://openap
     let percent = -1
 
     while(i <= Math.min(limit, 5)){
-        const url = `${redirecURL}${defaultUrl}${lawdCD}&DEAL_YMD=${dealYmd}&serviceKey=${serviceKey}&pageNo=${i}`;
+        const url = `${defaultUrl}${lawdCD}&DEAL_YMD=${dealYmd}&serviceKey=${serviceKey}&pageNo=${i}`;
         
         
         await fetch(url)
