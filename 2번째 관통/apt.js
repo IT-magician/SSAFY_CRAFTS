@@ -107,13 +107,6 @@ const getAPTList = async (lawdCD, dealYmd, boardtype,defaultUrl = "http://openap
     let percent = -1
 
     while(i <= Math.min(limit, 5)){
-        if (window.location.protocol == "https:"){
-            redirecURL = "https://proxy.cors.sh/"
-            console.log("https프로토콜에 의해 proxy서버로 redirect후 xml을 받아옵니다.")
-        }
-        else
-            redirecURL = ""
-        
         const url = `${redirecURL}${defaultUrl}${lawdCD}&DEAL_YMD=${dealYmd}&serviceKey=${serviceKey}&pageNo=${i}`;
         
         
