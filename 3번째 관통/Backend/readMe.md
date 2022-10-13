@@ -20,7 +20,7 @@
 ![favor3.PNG](pictures/favor3.PNG)  
 ![favor4.PNG](pictures/favor4.PNG)  
 ![favor5.PNG](pictures/favor5.PNG)  
-![favor.PNG](pictures/favor.PNG)  
+![favor6.PNG](pictures/favor6.PNG)  
 
 
 
