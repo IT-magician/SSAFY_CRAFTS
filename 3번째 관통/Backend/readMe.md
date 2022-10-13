@@ -9,8 +9,10 @@
 ![dong2.png](pictures/dong2.PNG)  
   
 ## 로그인을 하면, 가입자들이 검색한 아파트 지역들을 보여주도록 만듬  
-![login_in.PNG](pictures/login_in.PNG)  
+  * 로그인 안했을 때  
 ![login_out.PNG](pictures/login_out.PNG)  
+* 로그인 했을 때  
+![login_in.PNG](pictures/login_in.PNG)  
 ## 사용자 선호지역  
 (클릭 이벤트가 발생할 때마다 DB에 저장된 사용자 선호지역을 동기화하도록 설정함)  
 [사진]  
