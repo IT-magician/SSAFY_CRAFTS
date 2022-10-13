@@ -19,7 +19,7 @@
 
 
 
-### 시작전에 해주어야하는 설정  
+## 시작전에 해주어야하는 설정  
 mysql : db schema 및 table 생성 필요
 ```sql
 create database webdaejeon8th;
