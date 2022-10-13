@@ -15,7 +15,12 @@
 ![login_in.PNG](pictures/login_in.PNG)  
 ## 사용자 선호지역  
 (클릭 이벤트가 발생할 때마다 DB에 저장된 사용자 선호지역을 동기화하도록 설정함)  
-[사진]  
+![favor1.PNG](pictures/favor1.PNG)  
+![favor2.PNG](pictures/favor2.PNG)  
+![favor3.PNG](pictures/favor3.PNG)  
+![favor4.PNG](pictures/favor4.PNG)  
+![favor5.PNG](pictures/favor5.PNG)  
+![favor.PNG](pictures/favor.PNG)  
 
 
 
