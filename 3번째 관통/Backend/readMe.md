@@ -2,10 +2,10 @@
 * 아파트 조회시 데이터를 가져오도록 만듬  
   (클라이언트 데이터 요청 --> 서버 요청 받음 --> Controller('com.ssafy.apartment.controller')가 서비스 호출 --> DB Access후 데이터를 DTO묶음으로 된 ArrayList에 담음(만약 DB 데이터가 empty상태라면, 공공데이터의 REST API를 이용하여 파싱후 DB에 넣음. 그 다음에 데이터를 전달하도록 만듬) --> json string으로 클라이언트에 보냄(java의 toString을 override를 해서 json으로 만듬) --> 클라이언트 데이터 받음 --> html table 내용 및 KAKAO 지도 업데이트  
   --> 아파트 조회시, '구/군'까지만 설정후 데이터 요청했을 때
-[!picures/gugun1.PNG]  
-[데이터 요청후]  
+![gugun1.png](pictures/gugun1.PNG)  
+![gugun2.png](pictures/gugun2.png)  
   --> 아파트 조회시, '동'까지 설정후 데이터 요청했을 때  
-[데이터 요청전]  
+![dong.png](pictures/dong1.png)  
 [데이터 요청후]  
   
 * 로그인을 하면, 가입자들이 검색한 아파트 지역들을 보여주도록 만듬  
