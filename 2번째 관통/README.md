@@ -4,7 +4,7 @@
          1. 하루 허용 사용량 초과 2. 공공데이터 service key만료  
          xml을 받는 내용은 apt.js파일의 url부분에 있음. 2개의 url이 있을텐데, 첫번째는 select box용임. 두번째일거야.
          
-         (잉???... 어쩌다보니까 해결함... 분명 아까까지만 해도 안되었는디... 아마 그때 잠시 해당 proxy에 문제가 있었던듯..)  .... 걍 직접 호스팅해야할듯.. 내가 공공데이터포털에서 신청한 xml은 https프로토콜을 브라우저의 CORS때문에 지원을 안함(만약 이걸 할거면, 다른서버에서 받아와서 전달하는 redirect를 써야할듯...) vs code에서 live server로 실행해서 확인해야할듯..  
+         (CORS랑 Mixed Content문제를 해결해야 github pages에서 볼 수 있음. CORS는 크롬 확장 프로그램 'Allow CORS'설치 후 활성화 하면 됨. [Mixed Content](https://hbesthee.tistory.com/1923)는 현재 브라우저의 url옆에 자물쇠를 클릭해서 '안전)
          
          
 ![그림15](./craft_img/그림15.PNG)  
