@@ -6,7 +6,7 @@
          
          CORS랑 Mixed Content문제를 해결해야 github pages에서 볼 수 있음.  
          CORS는 크롬 확장 프로그램 'Allow CORS'설치 후 활성화 하면 됨.  
-         [Mixed Content](https://hbesthee.tistory.com/1923)는 현재 브라우저의 url옆에 자물쇠를 클릭해서 '안전하지 않은 콘텐츠' 설정을 차단->허용으로 바꾸어주던가, 아니면 .zip을 다운로드 받아서 (VSCode의 live server, eclipse등) 직접 호스팅 해야함
+         [Mixed Content](https://hbesthee.tistory.com/1923)는 접속하고 있는 브라우저의 url옆에 자물쇠를 클릭해서 '안전하지 않은 콘텐츠' 설정을 차단->허용으로 바꾸어주던가, 아니면 .zip을 다운로드 받아서 (VSCode의 live server, eclipse등) 직접 호스팅 해야함
          
          
 ![그림15](./craft_img/그림15.PNG)  
