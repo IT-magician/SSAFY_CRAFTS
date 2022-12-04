@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.park.model.mapper.parkMapper">
+
+	<select id="getParkInfo" parameterType="string"
+		resultType="parkDTO">
+		select * from park
+		
+		<if test="P_ZONE != null">
+			where P_ZONE = #{P_ZONE}
+		</if>
+	</select>
+	
+	<insert id="insertPark" parameterType="parkDTO">
+		insert into park(P_PARK,P_LIST_CONTENT,AREA,VISIT_ROAD, P_ZONE, P_ADMINTEL, P_ADDR, LONGITUDE, LATITUDE) values
+		<foreach collection="data" item="tmp" separator=",">
+			(#{tmp.P_PARK}, #{tmp.P_LIST_CONTENT}, #{tmp.AREA}, #{tmp.VISIT_ROAD}, #{tmp.P_ZONE}, #{tmp.P_ADMINTEL}, #{tmp.P_ADDR}, #{tmp.LONGITUDE}, #{tmp.LATITUDE})
+		</foreach>
+	</insert>
+	
+	<select id="countParks" parameterType="string"
+		resultType="int">
+		select count(*) from park
+		where P_PARK like #{P_PARK} 
+	</select>
+	
+	<select id="countAll" resultType="long">
+		select count(*) from park
+	</select>
+	
+	<select id="getParks" parameterType="string"
+		resultType="parkDTO">
+		select distinct P_PARK from park	
+	</select>
+	
+	<select id="searchById" parameterType="long" resultType="parkDTO">
+		select * from park where id = ${id}
+	</select>
+
+</mapper>

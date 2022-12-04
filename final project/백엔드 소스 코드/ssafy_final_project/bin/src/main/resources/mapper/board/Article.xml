@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.board.model.mapper.ArticleMapper">
+
+	<select id="getAll" resultType="ArticleDTO">
+		select * from article
+	</select>
+	
+	<select id="get" resultType="ArticleDTO">
+		select * from article where userID = #{userID} and RegisterDate = #{createdTime}
+	</select>
+	
+	<insert id="addArticle" parameterType="ArticleDTO">
+		insert into article(userID, title, content,RegisterDate) values(#{userID}, #{title},#{content},#{RegisterDate})
+	</insert>
+	
+	<update id="updateArticle" parameterType="ArticleDTO">
+		update article set title = #{title}, content = #{content} where RegisterDate = #{RegisterDate} and userID = #{userID}
+	</update>
+	
+	<delete id="deleteArticle">
+		delete from article where RegisterDate = #{createdTime} and userID = #{userID}
+	</delete>
+
+</mapper>

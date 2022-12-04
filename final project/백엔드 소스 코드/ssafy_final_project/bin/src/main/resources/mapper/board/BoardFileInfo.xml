@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.board.model.mapper.FileInfoMapper">
+	<select id="getAll" resultType="BoardFileInfoDTO">
+		select * from fileInfo
+	</select>
+	
+	<select id="get" resultType="BoardFileInfoDTO" parameterType="string">
+		select * from fileInfo where userID = #{userID} and SaveFileName = #{SaveFileName}
+	</select>
+	
+	<insert id="addFile" parameterType="BoardFileInfoDTO">
+		insert into fileInfo(userID, FileName,SaveFileName, FilePath, ContentType, FileSize, RegisterDate) value (#{userID}, #{FileName},#{SaveFileName}, #{FilePath}, #{ContentType}, ${FileSize}, #{RegisterDate})
+	</insert>
+
+</mapper>

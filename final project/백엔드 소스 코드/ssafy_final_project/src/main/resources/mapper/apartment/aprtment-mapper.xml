@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.apartment.model.mapper.apartmentMapper">
+	<select id="getRandom" resultType="apartmentDTO">
+		SELECT * FROM building
+		ORDER BY RAND()
+		LIMIT 30
+	</select>
+
+	<select id="getApartments" parameterType="string"
+		resultType="apartmentDTO">
+		select * from building
+		where sigunguCode like #{sigunguCode}
+		<if test="dong != null">
+			and AptDong = #{dong}
+		</if>
+	</select>
+
+	<select id="countApartments" parameterType="string"
+		resultType="int">
+		select count(*) from building
+		where sigunguCode like
+		#{sigunguCode}
+		limit 0,1
+	</select>
+
+	<insert id="insertApartments" parameterType="apartmentDTO">
+		insert into building(sigunguCode,AptName,AptFloor,AptSize,AptDong,AptJibun,AptPrice,latY,latX,sidoVal,gugunVal) values
+			<foreach collection="data" item="tmp" separator=",">
+				(#{tmp.sigunguCode},#{tmp.AptName},#{tmp.AptFloor},#{tmp.AptSize},#{tmp.AptDong},#{tmp.AptJibun},#{tmp.AptPrice},#{tmp.latY},#{tmp.latX},#{tmp.sidoVal},#{tmp.gugunVal})
+			</foreach>
+	</insert>
+
+	<select id="SearchById" parameterType="string" resultType="apartmentDTO">
+		select * from building where id = #{id}
+	</select>
+
+</mapper>

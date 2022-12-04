@@ -1,0 +1,14 @@
+{
+    "liveServer.settings.port": 8080,
+    "liveServer.settings.host": "localhost",
+
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/assets/css",
+        }
+    ],
+    "liveSassCompile.settings.generateMap": false,
+}
+

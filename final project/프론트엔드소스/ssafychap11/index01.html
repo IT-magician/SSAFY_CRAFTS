@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="./table.css" />
+	<title>SSAFY</title>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+</head>
+
+<body>
+	<div id='app'>
+		<div class='headtitle'>
+			<h2>SSAFY HRM</h2>
+		</div>
+
+		<div class='search_box'>
+			<router-link to="/route4">사원추가</router-link>
+			<router-link to="/route3">이름으로 찾기</router-link>
+			<router-link to="/route2">아이디로 찾기</router-link>
+			<router-link to="/route1">모든사원 보기</router-link>
+		</div>
+
+		<router-view></router-view>
+
+	</div>
+	<script type="module">
+		import router from './App.js';
+
+		var App = new Vue({
+			el: '#app',
+			router,
+			mounted() {
+				alert("Hello")
+			},
+		})
+	</script>
+</body>
+
+</html>

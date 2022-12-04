@@ -1,0 +1,251 @@
+/*========== Colors ==========*/
+/* Change favorite color to match images */
+/*Green dark 190 - Green 171 - Grren Blue 200*/
+/* HSL color mode */
+/*========== Font and typography ==========*/
+/*========== Margenes Bottom ==========*/
+/*========== z index ==========*/
+/*========== Hover overlay ==========*/
+/*========== Variables Dark theme ==========*/
+.dark-theme-box-shadow {
+  box-shadow: 5px 0 500px rgba(255, 255, 255, 0.1) !important;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  font-family: var(--title-font);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input {
+  border: none;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
+
+.main {
+  overflow-x: hidden;
+}
+
+.section {
+  padding: 4.5rem 0 2.5rem;
+}
+.section_title {
+  font-size: 1.75rem;
+  color: hsl(190deg, 64%, 18%);
+  text-align: center;
+  text-transform: capitalize;
+  margin-bottom: 2rem;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.categories {
+  display: flex;
+  overflow-x: auto;
+  justify-content: center;
+  margin: 2.5rem;
+}
+.categories > * {
+  margin: 0.25rem;
+}
+
+.button {
+  display: inline-block;
+  background-color: hsl(190deg, 64%, 22%);
+  color: #FFF;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.button:hover {
+  background-color: hsl(190deg, 64%, 15%);
+}
+.button--flex {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 0.25rem;
+       column-gap: 0.25rem;
+}
+.button--link {
+  background: none;
+  padding: 0;
+}
+.button--link:hover {
+  background: none;
+}
+
+.alert-color {
+  background: linear-gradient(45deg, #FF5370, #ff869a) !important;
+}
+
+.button-group {
+  display: flex;
+  justify-content: right;
+}
+.button-group > * {
+  margin-right: 0.75rem;
+}
+
+.gradient_button {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 50px;
+  border: none;
+  background: linear-gradient(120deg, #2980b9, #27ae60, #2980b9);
+  background-size: 200%;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s;
+  line-height: 50px;
+}
+.gradient_button:hover {
+  background-position: right;
+}
+
+.gradient-5 {
+  background: linear-gradient(120deg, #3498db, #8e44ad, #3498db);
+}
+
+@-webkit-keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+.bg {
+  -webkit-animation: slide 3s ease-in-out infinite alternate;
+          animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+.bg:nth-child(2) {
+  animation-direction: alternate-reverse;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+}
+.bg:nth-child(3) {
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+}
+
+.content {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.25em;
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+  left: 50%;
+  padding: 2.5rem;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 500px;
+}
+.content-input {
+  color: #333;
+  width: 100%;
+  background: none;
+  height: 40px;
+  border-bottom: 2px solid rgba(47, 47, 47, 0.25);
+}
+.content-input:focus {
+  border-bottom: 1px solid rgba(47, 47, 47, 0.25);
+}
+.content .input {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.content span::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  top: 40px;
+  left: 25%;
+  transform: translateY(-50%);
+  background: linear-gradient(120deg, #6c3, #09f);
+  transition: 0.5s;
+}
+.content input:not(:-moz-placeholder-shown) + span::after {
+  width: 50%;
+  transform: scaleX(2);
+}
+.content input:not(:-ms-input-placeholder) + span::after {
+  width: 50%;
+  transform: scaleX(2);
+}
+.content input:focus + span::after,
+.content input:not(:placeholder-shown) + span::after {
+  width: 50%;
+  transform: scaleX(2);
+}

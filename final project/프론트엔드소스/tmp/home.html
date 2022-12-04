@@ -1,0 +1,40 @@
+<section class="place section" id="place">
+    <h2 class="section_title">Our recommendation Places</h2>
+
+    <div class="categories">
+        <button type="button" class="button" data-filter="all">All</button>
+        <button type="button" class="button" data-filter=".category-a">Category A</button>
+        <button type="button" class="button" data-filter=".category-b">Category B</button>
+        <button type="button" class="button" data-filter=".category-c">Category C</button>
+        <button type="button" class="button" data-filter=".ABC">ABC</button>
+        <button type="button" class="button" data-sort="random">Random</button>
+    </div>
+
+    <div class="place_container container grid">
+        <!--==================== PLACES CARD 1 ====================-->
+        <div class="place_card category-a" data-order="1" v-for="(item,idx) in resultData">
+            <img src="assets/img/place1.jpg" alt="" class="place_img" />
+
+            <div class="place_content">
+                <span class="place_rating">
+                    <i class="ri-star-line place_rating-icon"></i>
+                    <span class="place_rating-number">4,8</span>
+                </span>
+
+                <div class="place_data">
+                    <h3 class="place_title">Bali</h3>
+                    <span class="place_subtitle">Indonesia</span>
+                    <span class="place_price">category-a</span>
+                </div>
+            </div>
+
+            <button class="button button--flex place_button">
+                <i class="ri-arrow-right-line"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="mixitup-page-list"></div>
+    <!-- <div class="mixitup-page-stats"></div> -->
+</section>

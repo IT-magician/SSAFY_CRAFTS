@@ -1,0 +1,984 @@
+@import './abstracts/variables';
+@import './base/reset';
+@import './components/common';
+@import './layout/class';
+
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@500;600;700&display=swap');
+
+/*========== Button Dark/Light ==========*/
+.nav_dark {
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+    position: absolute;
+    left: 3rem;
+    bottom: 4rem;
+}
+
+.change {
+
+    &-theme,
+    &-theme-name {
+        color: $text-color;
+    }
+
+    &-theme {
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    &-theme-name {
+        font-size: $small-font-size;
+    }
+}
+
+/*=============== HEADER ===============*/
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $z-fixed;
+    background-color: transparent;
+}
+
+/*=============== NAV ===============*/
+.nav {
+    height: $header-height;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &_logo,
+    &_toggle {
+        color: $white-color;
+    }
+
+    &_logo {
+        font-weight: $font-semi-bold;
+    }
+
+    &_toggle {
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    &_menu {
+        position: relative;
+
+        @media screen and (max-width: 767px) {
+            position: fixed;
+            background-color: $body-color;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100%;
+            box-shadow: -1px 0 4px hsla(190, 64%, 15%, .15);
+            padding: 3rem;
+            transition: .4s;
+        }
+    }
+
+    &_list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2.5rem;
+    }
+
+    &_link {
+        color: $text-color-light;
+        font-weight: $font-semi-bold;
+        text-transform: uppercase;
+
+        &:hover {
+            color: $text-color;
+        }
+    }
+
+    &_close {
+        position: absolute;
+        top: .75rem;
+        right: 1rem;
+        font-size: 1.5rem;
+        color: $title-color;
+        cursor: pointer;
+    }
+}
+
+/* show menu */
+.show-menu {
+    right: 0;
+}
+
+/* Change background header */
+.scroll-header {
+    background-color: $body-color;
+    box-shadow: 0 0 4px hsla(190, 64%, 15%, .15);
+
+    & .nav_logo,
+    & .nav_toggle {
+        color: $title-color;
+    }
+}
+
+/* Active link */
+.active-link {
+    position: relative;
+    color: $title-color;
+
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: $title-color;
+        width: 100%;
+        height: 2px;
+        bottom: -.75rem;
+        left: 0;
+    }
+}
+
+/*=============== HOME ===============*/
+.home {
+    &_img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        object-position: 83%;
+    }
+
+    &_container {
+        position: relative;
+        height: calc(100vh - $header-height);
+        align-content: center;
+        row-gap: 3rem;
+    }
+
+    &_data-subtitle,
+    &_data-title,
+    &_social-link,
+    &_info {
+        color: $white-color;
+    }
+
+    &_data {
+        &-subtitle {
+            display: block;
+            font-weight: $font-semi-bold;
+            margin-bottom: $mb-0-75;
+        }
+
+        &-title {
+            font-size: $biggest-font-size;
+            font-weight: $font-medium;
+            margin-bottom: $mb-2-5;
+        }
+    }
+
+    &_social {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.5rem;
+
+        &-link {
+            font-size: 1.2rem;
+            width: max-content;
+        }
+    }
+
+    &_info {
+        background-color: $first-color;
+        display: flex;
+        padding: 1.5rem 1rem;
+        align-items: center;
+        column-gap: .5rem;
+        position: absolute;
+        right: 0;
+        bottom: 1rem;
+        width: 228px;
+
+        &-title {
+            display: block;
+            font-size: $small-font-size;
+            font-weight: $font-semi-bold;
+            margin-bottom: $mb-0-75;
+        }
+
+        &-button {
+            font-size: $smaller-font-size;
+        }
+
+        &-overlay {
+            overflow: $img-hidden;
+        }
+
+        &-img {
+            width: 145px;
+            transition: $img-transition;
+
+            &:hover {
+                transform: $img-scale;
+            }
+        }
+    }
+}
+
+/*=============== BUTTONS & mixitup ===============*/
+
+.mixitup-control-active{
+    background-color: $first-color-alt !important;
+}
+.mixitup-page-list{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
+.mixitup-control {
+    display: inline-block;
+    background-color: $first-color;
+    color: $white-color;
+    padding: 1rem 2rem;
+    font-weight: $font-semi-bold;
+    transition: .3s;
+
+    &:hover
+    {
+        background-color: $first-color-alt;
+    }
+
+    &--flex {
+        display: flex;
+        align-items: center;
+        column-gap: .25rem;
+    }
+
+    &--link {
+        background: none;
+        padding: 0;
+
+        &:hover {
+            background: none;
+        }
+    }
+}
+
+
+/*=============== DISCOVER ===============*/
+.discover {
+    &_card {
+        position: relative;
+        width: 200px;
+        overflow: $img-hidden;
+    }
+
+    &_data {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1rem;
+    }
+
+    &_title,
+    &_description {
+        color: $white-color;
+    }
+
+    &_title {
+        font-size: $h3-font-size;
+        margin-bottom: $mb-0-25;
+    }
+
+    &_description {
+        display: block;
+        font-size: $smaller-font-size;
+    }
+
+    &_img {
+        transition: $img-transition;
+
+        &:hover {
+            transform: $img-scale;
+        }
+    }
+}
+
+.swiper-container-3d .swiper-slide-shadow-left,
+.swiper-container-3d .swiper-slide-shadow-right {
+    background-image: none;
+}
+
+
+/*=============== EXPERIENCE ===============*/
+.experience {
+    &_container {
+        row-gap: 2.5rem;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    &_content {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1rem;
+        justify-items: center;
+        padding: 0 2rem;
+    }
+
+    &_number {
+        font-size: $h2-font-size;
+        font-weight: $font-semi-bold;
+        margin-bottom: $mb-0-5;
+    }
+
+    &_description {
+        font-size: $small-font-size;
+    }
+
+    &_img {
+        position: relative;
+        padding-bottom: 2rem;
+
+        &-one,
+        &-two {
+            transition: $img-transition;
+        }
+
+        &-one:hover,
+        &-two:hover {
+            transform: $img-scale;
+        }
+    }
+
+    &_overlay {
+        overflow: $img-hidden;
+
+        &:nth-child(1) {
+            width: 263px;
+            margin-right: 2rem;
+        }
+
+        &:nth-child(2) {
+            width: 120px;
+            position: absolute;
+            top: 2rem;
+            right: 0;
+        }
+    }
+}
+
+/*=============== VIDEO ===============*/
+.video {
+    &_container {
+        padding-bottom: 1rem;
+    }
+
+    &_description {
+        text-align: center;
+        margin-bottom: $mb-2-5;
+    }
+
+    &_content {
+        position: relative;
+    }
+
+    &_button {
+        position: absolute;
+        right: 1rem;
+        bottom: -1rem;
+        padding: 1rem 1.5rem;
+
+        &-icon {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+/*=============== PLACES ===============*/
+.place {
+
+    &_card,
+    &_img {
+        height: 230px;
+        width: 166px;
+    }
+
+    &_container {
+        grid-template-columns: repeat(2, max-content);
+        justify-content: center;
+
+
+        // max-height: 500px;
+        // overflow-y: scroll;
+        // box-shadow: 5px 0 500px rgba($color: #000, $alpha: 0.1);
+
+    }
+
+    &_card {
+        position: relative;
+        overflow: $img-hidden;
+
+        &:hover .place_img {
+            transform: $img-scale;
+        }
+    }
+
+    &_img {
+        transition: $img-transition;
+    }
+
+    &_content,
+    &_title {
+        color: $white-color;
+    }
+
+    &_content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: .75rem .75rem 1rem;
+    }
+
+    &_rating {
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+
+        &-icon {
+            font-size: .75rem;
+            margin-right: $mb-0-25;
+        }
+
+        &-number {
+            font-size: $small-font-size;
+        }
+    }
+
+    &_subtitle,
+    &_price {
+        display: block;
+    }
+
+    &_title {
+        font-size: $h3-font-size;
+        margin-bottom: $mb-0-25;
+    }
+
+    &_subtitle {
+        font-size: $smaller-font-size;
+        margin-bottom: $mb-1-25;
+    }
+
+    &_button {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        padding: .75rem 1rem;
+    }
+}
+
+/*=============== SUBSCRIBE ===============*/
+.subscribe {
+    &_bg {
+        background-color: $first-color-second;
+        padding: 2.5rem 0;
+    }
+
+    &_title,
+    &_description {
+        color: $white-color;
+    }
+
+    &_description {
+        text-align: center;
+        margin-bottom: $mb-2-5;
+    }
+
+    &_form {
+        background-color: $input-color;
+        padding: .5rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &_input {
+        width: 70%;
+        padding-right: .5rem;
+        background-color: $input-color;
+        color: $text-color;
+
+        &::placeholder {
+            color: $text-color;
+        }
+    }
+}
+
+/*=============== SPONSORS ===============*/
+.sponsor {
+    &_container {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        justify-items: center;
+        row-gap: 3.5rem;
+    }
+
+    &_content:hover .sponsor_img {
+        filter: invert(.5);
+    }
+
+    &_img {
+        width: 90px;
+        filter: invert(.7);
+        transition: $img-transition;
+    }
+}
+
+/*=============== FOOTER ===============*/
+.footer {
+    &_container {
+        row-gap: 5rem;
+    }
+
+    &_content {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        row-gap: 2rem;
+    }
+
+    &_title,
+    &_subtitle {
+        font-size: $h3-font-size;
+    }
+
+    &_title {
+        margin-bottom: $mb-0-5;
+    }
+
+    &_description {
+        margin-bottom: $mb-2;
+    }
+
+    &_social {
+        font-size: 1.25rem;
+        color: $title-color;
+        margin-right: $mb-1-25;
+    }
+
+    &_subtitle {
+        margin-bottom: $mb-1;
+    }
+
+    &_item {
+        margin-bottom: $mb-0-75;
+    }
+
+    &_link {
+        color: $text-color;
+
+        &:hover {
+            color: $title-color;
+        }
+    }
+
+    &_rights {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.5rem;
+        text-align: center;
+    }
+
+    &_copy,
+    &_terms-link {
+        font-size: $small-font-size;
+        color: $text-color-light;
+    }
+
+    &_terms {
+        display: flex;
+        column-gap: 1.5rem;
+        justify-content: center;
+
+        &-link:hover {
+            color: $text-color;
+        }
+    }
+}
+
+/*========== SCROLL UP ==========*/
+.scrollup {
+    position: fixed;
+    right: 1rem;
+    bottom: -20%;
+    background-color: $first-color;
+    padding: .5rem;
+    display: flex;
+    opacity: .9;
+    z-index: $z-tooltip;
+    transition: .4s;
+
+    &:hover {
+        background-color: $first-color-alt;
+        opacity: 1;
+    }
+
+    &_icon {
+        color: $white-color;
+        font-size: 1.2rem;
+    }
+}
+
+/* Show scroll */
+.show-scroll {
+    bottom: 5rem;
+}
+
+/*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar {
+    width: .60rem;
+    background-color: $scroll-bar-color;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $scroll-thumb-color;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: $text-color-light;
+}
+
+/*=============== MEDIA QUERIES ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+    .place {
+        &_container {
+            grid-template-columns: max-content;
+            justify-content: center;
+        }
+    }
+
+    .experience {
+        &_content {
+            padding: 0;
+        }
+
+        &_overlay:nth-child(1) {
+            width: 190px;
+        }
+
+        &_overlay:nth-child(2) {
+            width: 80px;
+        }
+    }
+
+    .home {
+        &_info {
+            width: 190px;
+            padding: 1rem;
+        }
+    }
+
+    .experience_img,
+    .video_container {
+        padding: 0;
+    }
+}
+
+/* For medium devices */
+@media screen and (min-width: 568px) {
+    .video_container {
+        display: grid;
+        grid-template-columns: .6fr;
+        justify-content: center;
+    }
+
+    .place {
+        &_container {
+            grid-template-columns: repeat(3, max-content);
+        }
+    }
+
+    .subscribe {
+        &_form {
+            width: 470px;
+            margin: 0 auto;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        margin: 0;
+    }
+
+    .nav {
+        height: calc($header-height) + 1.5rem;
+
+        &_link {
+            color: $white-color;
+            text-transform: initial;
+
+            &:hover {
+                color: $white-color;
+            }
+        }
+
+        &_dark {
+            position: initial;
+        }
+
+        &_menu {
+            display: flex;
+            column-gap: 1rem;
+        }
+
+        &_list {
+            flex-direction: row;
+            column-gap: 4rem;
+        }
+
+        &_toggle,
+        &_close {
+            display: none;
+        }
+    }
+
+    .change {
+        &-theme-name {
+            display: none;
+        }
+
+        &-theme {
+            color: $white-color;
+        }
+    }
+
+    .active-link::before {
+        background-color: $white-color;
+    }
+
+    .scroll-header .nav_link {
+        color: $text-color;
+    }
+
+    .scroll-header .active-link {
+        color: $title-color;
+    }
+
+    .scroll-header .active-link::before {
+        background-color: $title-color;
+    }
+
+    .scroll-header .change-theme {
+        color: $text-color;
+    }
+
+    .section {
+        padding: 7rem 0 2rem;
+    }
+
+    .home {
+        &_container {
+            height: 100vh;
+            grid-template-rows: 1.8fr .5fr;
+        }
+
+        &_data {
+            align-self: flex-end;
+        }
+
+        &_social {
+            flex-direction: row;
+            align-self: flex-end;
+            margin-bottom: 3rem;
+            column-gap: 2.5rem;
+        }
+
+        &_info {
+            bottom: 3rem;
+        }
+    }
+
+    .about {
+        &_container {
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+        }
+
+        &_data,
+        &_title {
+            text-align: initial;
+        }
+
+        &_title {
+            margin-bottom: $mb-1-5;
+        }
+
+        &_description {
+            margin-bottom: $mb-2;
+        }
+    }
+
+    .discover {
+        &_container {
+            width: 610px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .discover_container,
+    .place_container {
+        padding-top: 2rem;
+    }
+
+    .experience {
+        &_overlay:nth-child(1) {
+            width: 363px;
+            margin-right: 4rem;
+        }
+
+        &_overlay:nth-child(2) {
+            width: 160px;
+        }
+    }
+
+    .subscribe {
+        &_bg {
+            background: none;
+            padding: 0;
+        }
+
+        &_container {
+            background-color: $first-color-second;
+            padding: 3.5rem 0;
+        }
+
+        &_input {
+            padding: 0 .5rem;
+        }
+    }
+
+    .footer {
+        &_rights {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+}
+
+/* For large devices */
+@media screen and (min-width: 1024px) {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .home {
+        &_container {
+            grid-template-rows: 2fr .5fr;
+        }
+
+        &_info {
+            width: 328px;
+            grid-template-columns: 1fr 2fr;
+            column-gap: 2rem;
+
+            &-title {
+                font-size: $normal-font-size;
+            }
+
+            &-img {
+                width: 240px;
+            }
+        }
+    }
+
+
+    .discover {
+        &_card {
+            width: 500px;
+        }
+
+        &_container {
+            width: 700px;
+        }
+
+        &_data {
+            left: 1.5rem;
+            bottom: 2rem;
+        }
+
+        &_title {
+            font-size: $h2-font-size;
+        }
+    }
+
+    .experience {
+        &_content {
+            margin: $mb-1 0;
+            column-gap: 3.5rem;
+        }
+
+        &_overlay:nth-child(1) {
+            width: 463px;
+            margin-right: 7rem;
+        }
+
+        &_overlay:nth-child(2) {
+            width: 220px;
+            top: 3rem;
+        }
+    }
+
+    .video {
+        &_container {
+            grid-template-columns: .7fr
+        }
+
+        &_description {
+            padding: 0 8rem;
+        }
+    }
+
+    .place {
+        &_container {
+            gap: 3rem 2rem;
+        }
+
+        &_card,
+        &_img {
+            width: 186px;
+            height: 263px;
+        }
+    }
+
+    .footer_content {
+        justify-items: center;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+
+/* For tall screens on mobiles y desktop*/
+@media screen and (min-height: 721px) {
+    body {
+        margin: 0;
+    }
+
+    .home {
+
+        &_container,
+        &_img {
+            height: 640px;
+        }
+    }
+}

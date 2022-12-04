@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel</title>
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png" />
+
+    <!--=============== Vue ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+
+    <!--=============== Kakao Map ===============-->
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3dc1d30bd83040ce1fe426e23ef1f0b8&libraries=services"
+    ></script>
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/account.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/portal.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.staticaly.com/gh/hung1001/font-awesome-pro-v6/44659d9/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!--=============== Web Editor ===============-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="/summernote/summernote-lite.js"></script>
+    <script src="/summernote/lang/summernote-ko-KR.js"></script>
+    <link rel="stylesheet" href="/summernote/summernote-lite.css" />
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" type="text/css" />
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" type="text/css" href="assets/css/swiper-bundle.min.css" />
+  </head>
+  <body>
+    <div id="app">
+      <router-view></router-view>
+    </div>
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+      <i class="ri-arrow-up-line scrollup_icon"></i>
+    </a>
+
+    <!--=============== SCROLL REVEAL===============-->
+    <script src="assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"
+      integrity="sha512-nKZDK+ztK6Ug+2B6DZx+QtgeyAmo9YThZob8O3xgjqhw2IVQdAITFasl/jqbyDwclMkLXFOZRiytnUrXk/PM6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- mixitup -->
+    <script src="assets/js/mixitup-pagination.min.js"></script>
+    <!-- https://gitlab.ledevsimple.ca/vendor-->
+
+    <!--=============== MAIN JS ===============-->
+    <!-- <script src="assets/js/main.js"></script> -->
+    <script type="module">
+      import router from "./assets/vue/App.js";
+
+      const App = new Vue({
+        el: "#app",
+        router,
+        mounted() {
+          window.addEventListener("popstate",function(e){
+          })
+        },
+      });
+    </script>
+  </body>
+</html>

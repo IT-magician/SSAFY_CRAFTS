@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel</title>
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png" />
+
+    <!--=============== Vue ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+
+
+    <!--=============== Kakao Map ===============-->
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3dc1d30bd83040ce1fe426e23ef1f0b8&libraries=services"></script>
+
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/portal.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.staticaly.com/gh/hung1001/font-awesome-pro-v6/44659d9/css/all.min.css" rel="stylesheet"
+        type="text/css" />
+
+
+
+    <!--=============== Web Editor ===============-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="/summernote/summernote-lite.js"></script>
+    <script src="/summernote/lang/summernote-ko-KR.js"></script>
+    <link rel="stylesheet" href="/summernote/summernote-lite.css">
+
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" type="text/css" />
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" type="text/css" href="assets/css/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="app-icon">
+                    <img src="assets\img\favicon.png" alt="" srcset="">
+                </div>
+            </div>
+            <ul class="sidebar-list">
+                <li class="sidebar-list-item active">
+                    <a href="#">
+                        <i class="fa-solid fa-house text-icon"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-list-item">
+                    <a href="#">
+                        <i class="fa-solid fa-magnifying-glass text-icon"></i>
+                        <span>Explore</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-list-item">
+                    <a href="#">
+                        <i class="fa-regular fa-building text-icon"></i>
+                        <span>Where </br> to be </br>my Home?</span>
+                    </a>
+                </li>
+
+
+                <li class="sidebar-list-item tab">
+
+                    <input type="checkbox" id="chck1">
+                    <a href="#">
+                        <label for="chck1">
+
+                            <i class="fa-regular fa-calendar-lines-pen text-icon"></i>
+                            <span>Board</span>
+                        </label>
+                    </a>
+                    <div class="sidebar-list-item  tab-content active">전체 목록</div>
+                    <div class="sidebar-list-item  tab-content">'Explore' 목록</div>
+                    <div class="sidebar-list-item  tab-content">'Where </br> to be </br>my Home?' 목록</div>
+                    <!-- <div class="tab-content">글쓰기</div>
+                    <div class="tab-content">b</div> -->
+                </li>
+
+                <li class="sidebar-list-item">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-pie-chart">
+                            <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+                            <path d="M22 12A10 10 0 0 0 12 2v10z" />
+                        </svg>
+                        <span>Statistics</span>
+                    </a>
+                </li>
+
+            </ul>
+
+
+
+            <div class="account-info">
+                <div class="account-info-picture">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="Account">
+                </div>
+                <div class="account-info-name">김태훈</div>
+                <button class="account-info-logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="app-content">
+            
+            <div class="board-writer">
+
+              
+                  <ul class="board-list">
+                    <li class="board-item" v-for="(item, i) in resultData" @click="moveView(i)">
+                        <div class="board-item-index">{{i}}</div>
+                      <div class="board-item-title">
+                        <div class="before"></div>
+                        <div class="title-content" v-html="item.title"></div>
+                      </div>
+                      <div class="board-item-detail">
+                        <div class="board-item-detail-icon">
+                          <i class="fa-regular fa-bench-tree"></i>
+                        </div>
+                        <div class="board-item-detail-views">{{item.views}}</div>
+                      </div>
+                      <div class="board-item-place">
+                        <div class="board-item-place-name">{{item.place}}</div>
+                        <div class="board-item-place-position">
+                          {{item.placePos}}
+                        </div>
+                      </div>
+              
+                      <div class="writer-name">aaa</div>
+                    </li>
+                </ul>
+              
+                
+            </div>
+            
+                
+        
+        </div>
+    </div>
+
+    <script>
+
+new Vue({
+    el: ".app-container",
+    data() {
+        return {
+            resultData: [],
+        }
+    },
+    created() {
+        let xhr = new XMLHttpRequest()
+        xhr.open("post","http://localhost:8091/board/get/all",false)
+        xhr.send(null)
+        try {
+            this.resultData = JSON.parse(xhr.responseText)
+console.log(this.resultData)
+            for (let i = 0;i < this.resultData.length;i++){
+                if (this.resultData[i].service_name == "house"){
+                    
+                    this.resultData[i].place = this.resultData[i].aptName
+                    this.resultData[i].placePos = `${this.resultData[i].aptSidoVal} ${this.resultData[i].aptGugunVal} ${this.resultData[i].aptDong} ${this.resultData[i].aptJibun}`
+
+                }
+                else if (this.resultData[i].service_name == "explore"){
+
+                }
+            }
+        } catch (error) {
+            alert("서버에 오류가 발생하였습니다.\n잠시후에 다시 시도해주세요.")
+        }
+    },
+    methods: {
+        moveView(idx){
+            console.log(this.resultData[idx].id)
+        }
+    },
+})
+
+
+
+    </script>
+
+</body>
+
+</html>

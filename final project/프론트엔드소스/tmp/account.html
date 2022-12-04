@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+
+    <link rel="stylesheet" href="assets/css/account.css">
+
+    <!--=============== Vue ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="bg"></div>
+        <div class="bg"></div>
+        <div class="bg"></div>
+
+
+        <div class="content" v-if="isAccountInfoMode">
+            <div class="input">
+                <input type="search" v-model="userID" id="userID" :placeholder="isLoginMode?'ID':'가입할 ID'"
+                    class="content-input" disabled>
+                <span></span>
+            </div>
+            <div class="input">
+                <input type="search" v-model="userPW" id="userPW" placeholder="PASSWORD" class="content-input">
+                <span></span>
+            </div>
+            <div class="input">
+                <input type="search" v-model="userName" id="userName" placeholder="이름" class="content-input">
+                <span></span>
+            </div>
+            <div class="input">
+                <input type="search" v-model="userAddr" id="userAddr" placeholder="주소" class="content-input">
+                <span></span>
+            </div>
+
+
+
+            <div class="button-group" style="position: relative;">
+                <input type="button" value="수정" class="gradient_button" @click="updateAccount">
+                <input type="button" value="삭제" class="gradient_button gradient-5" @click="deleteAccount">
+            </div>
+        </div>
+
+        <div class="content" v-if="!isAccountInfoMode">
+            <div class="input">
+                <input type="search" v-model="userID" id="userID" :placeholder="isLoginMode?'ID':'가입할 ID'"
+                    class="content-input">
+                <span></span>
+            </div>
+            <div class="input">
+                <input type="search" v-model="userPW" id="userPW" placeholder="PASSWORD" class="content-input">
+                <span></span>
+            </div>
+            <div class="input" v-if="!isLoginMode">
+                <input type="search" v-model="userName" id="userName" placeholder="이름" class="content-input">
+                <span></span>
+            </div>
+            <div class="input" v-if="!isLoginMode">
+                <input type="search" v-model="userAddr" id="userAddr" placeholder="주소" class="content-input">
+                <span></span>
+            </div>
+
+
+
+            <div class="button-group" style="position: relative;">
+                <label for="register" style="line-height: 50px;cursor:pointer;"
+                    v-html="isLoginMode?'계정이 없나요? <u>회원가입</u>':'로그인하러 가기'"></label> <input type="checkbox" name=""
+                    id="register" v-model="isLoginMode" style="display: none;">
+                <input type="button" :value="isLoginMode?'로그인':'회원가입'" class="gradient_button" @click="handler">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    isAccountInfoMode: false,
+
+                    isLoginMode: true,
+                    userID: null,
+                    userPW: null,
+                    userName: null,
+                    userAddr: null,
+                }
+            },
+            methods: {
+                handler() {
+                    if (this.isEmpty(this.userID))
+                        alert("아이디를 입력해주세요. ")
+                    if (!this.isEmpty(this.userID) && this.isEmpty(this.userPW))
+                        alert("비밀번호를 입력해주세요. ")
+
+                    let xhr = new XMLHttpRequest()
+
+
+                    if (this.isLoginMode) {
+                        // 로그인 모드
+                        xhr.open('post', `http://localhost:8091/member/check?userID=${this.userID}&userPW=${this.userPW}`, false)
+                        xhr.send(null)
+
+                        try {
+                            if (xhr.status != 200) throw "internal server error."
+
+                            ret = JSON.parse(xhr.responseText)
+                            console.log(ret)
+                        } catch (error) {
+                            alert(error + " 잠시후에 다시 시도해주세요")
+                        }
+
+                        if (xhr.status == 200){
+                            alert("로그인 성공")
+                        }
+                    }
+                    else {
+                        // 회원가입 모드
+                        if (this.isEmpty(this.userName))
+                            alert("이름을 입력해주세요. ")
+                        if (!this.isEmpty(this.userName) && this.isEmpty(this.userAddr))
+                            alert("주소를 입력해주세요. ")
+
+
+                        xhr.open('post', `http://localhost:8091/member/get?userID=${this.userID}`, false)
+                        xhr.send(null)
+                        if (!xhr || xhr.length == 0){
+                            alert("이미 존재하는 ID입니다.")
+                            return
+                        }
+                        
+                        try {
+                            tmp = JSON.parse(xhr.responseText)
+                            alert("이미 존재하는 ID입니다.")
+                            return
+                        } catch (error) {
+                            
+                        }
+
+                        xhr.open('post', `http://localhost:8091/member/regist?userID=${this.userID}&userPW=${this.userPW}&userName=${this.userName}&userAddr=${this.userAddr}`, false)
+                        xhr.send(null)
+
+                        if (xhr.status == 200){
+                            alert("회원가입 성공!!!")
+                            this.isLoginMode = true
+
+                        }
+                    }
+                },
+                isEmpty(str) {
+                    return !str || str.length == 0
+                },
+                updateAccount() {
+                    if (this.isEmpty(this.userPW))
+                        alert("비밀번호를 입력해주세요. ")
+                    else if (this.isEmpty(this.userName))
+                        alert("이름을 입력해주세요. ")
+                    else if (this.isEmpty(this.userAddr))
+                        alert("주소를 입력해주세요. ")
+
+                    let xhr = new XMLHttpRequest()
+                    xhr.open('post', `http://localhost:8091/member/update?userID=${this.userID}&userPW=${this.userPW}&userName=${this.userName}&userAddr=${this.userAddr}`, false)
+                    xhr.send(null)
+
+                    if (xhr.status == 200){
+                        
+                        alert("수정했습니다.")
+                    }
+                    else{
+                        // alert("")
+                    }
+                },
+
+                deleteAccount() {
+                    if (!confirm("삭제를 하게 되면 복구가 불가능합니다.\n삭제하시겠습니까?"))
+                        return
+
+                    let xhr = new XMLHttpRequest()
+                    xhr.open('post', `http://localhost:8091/member/delete?userID=${this.userID}`, false)
+                    xhr.send(null)
+
+                    if (xhr.status == 200)
+                        alert("삭제되었습니다.")
+                },
+            },
+
+            created() {
+                const query = window.location.search;
+                const param = new URLSearchParams(query);
+                const id = param.get('userID');
+
+
+                let xhr = new XMLHttpRequest()
+                xhr.open('post', `http://localhost:8091/member/get?userID=${id}`, false)
+                xhr.send(null)
+
+                try {
+                    this.isAccountInfoMode = JSON.parse(xhr.responseText)
+                    this.userID = this.isAccountInfoMode.userID
+                    this.userPW = this.isAccountInfoMode.userPW
+                    this.userName = this.isAccountInfoMode.userName
+                    this.userAddr = this.isAccountInfoMode.userAddr
+                } catch (error) {
+
+                }
+
+                history.replaceState({}, null, location.pathname);
+            }
+        })
+    </script>
+</body>
+
+</html>

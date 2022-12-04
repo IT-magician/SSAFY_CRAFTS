@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let xhr = new XMLHttpRequest();
+      let form_data = new FormData();
+
+      xhr.open("post", "http://localhost:8091/authenticate", false);
+      form_data.append("userID", "ssafy");
+      form_data.append("password", "ssafy");
+      xhr.send(form_data);
+
+      console.log(xhr.status, xhr.responseText);
+
+      const token = xhr.responseText;
+
+      xhr.open("post", "http://localhost:8091/member/get", false);
+      form_data = new FormData();
+      xhr.setRequestHeader("Authorization", `Bearer ${token}`);
+      form_data.append("userID", "ssafy");
+      xhr.send(form_data);
+      console.log(`Bearer ${token}`);
+
+      console.log(xhr.status, xhr.responseText);
+    </script>
+  </body>
+</html>

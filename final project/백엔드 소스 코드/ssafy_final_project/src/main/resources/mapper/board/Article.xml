@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.board.model.mapper.ArticleMapper">
+
+	<select id="getAll" resultType="ArticleDTO" parameterType="string">
+		select * from article
+		<if test="service_name != null">
+			where service_name = #{service_name}
+		</if>
+	</select>
+	
+	<select id="get" resultType="ArticleDTO">
+		select * from article where userID = #{userID} and id = ${id}
+	</select>
+	
+	
+	<select id="getByRegistedDate" resultType="string">
+		select * from article where userID = #{userID} and registerDate = #{registedDate}
+	</select>
+	
+	<insert id="addArticle" parameterType="ArticleDTO">
+		insert into article(userID, title, content,RegisterDate, views,service_name,service_item_id  ,AptId,AptName,AptSidoVal,AptGugunVal,AptDong,AptJibun) values(#{userID}, #{title},#{content},#{RegisterDate}, 0,#{service_name},#{service_item_id}     ,#{AptId},#{AptName},#{AptSidoVal},#{AptGugunVal},#{AptDong},#{AptJibun})
+	</insert>
+	
+	<update id="updateArticle" parameterType="ArticleDTO">
+		update article set title = #{title}, content = #{content} where id = #{id} and userID = #{userID}
+	</update>
+	
+	<delete id="deleteArticle">
+		delete from article where id = ${id} and userID = #{userID}
+	</delete>
+	
+	<update id="increaseView" parameterType="ArticleDTO">
+		update article set views = views + 1 where id = ${id} and userID = #{userID}
+	</update>
+
+</mapper>
