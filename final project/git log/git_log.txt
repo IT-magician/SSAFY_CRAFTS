@@ -1,0 +1,355 @@
+
+C:\Users\hoan1\Documents\vue project\ssafy_final_project>git log
+commit 501bceabad5e1444c654f847260553ee1bd43727 (HEAD -> taehun)
+Merge: d5549fe c38c3ae
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 24 20:41:40 2022 +0900
+
+    Merge branch 'taehun' of https://lab.ssafy.com/hoan123432/ssafy_final_project into taehun
+
+commit d5549fe54bc90df2756fb9bd23456398fbfeb55e
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 24 20:40:59 2022 +0900
+
+    aaa
+
+commit c38c3ae021af59b6ff86d550915733ec75612842
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 24 17:55:50 2022 +0900
+
+    aa
+
+commit 7ed12499dc0dc1b715def89dd01c1e9ec26360b7
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 24 17:44:39 2022 +0900
+
+    lalalal
+
+commit 217ca6bcf22aeab8ddbfe85141368b2322b874a4
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 24 17:20:51 2022 +0900
+
+    mixitup 넣음
+
+commit ca8c2f0dc0522824f6b6aed2ce25154180ee0e5e
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 24 11:43:57 2022 +0900
+
+    게시판 뷰 옮김
+
+    몇가지 체크하긴해야해...
+
+commit 61da8812ca193cdaf86cf8665987865d4f29ea4c
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 24 02:12:22 2022 +0900
+
+    게시판
+
+    뷰로 바꿔야함
+
+commit 4bcc01bcefb9840d3913a49689421e11b25e5832
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 18:00:10 2022 +0900
+
+    ㅁㅁㅁㅁㅁ
+
+commit b707fd1f4e8e3f7e5dab4c0b944c3e61beaacdf8
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 17:47:44 2022 +0900
+
+    지도 나오는거 확인완료..
+
+    보안 해제함..
+
+commit 31f7327bcf8d6804587ed2421c9e44709f054482
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 17:35:05 2022 +0900
+
+    링크 연결 작업 완료1
+
+    ul에 active 거는거 못함...
+
+commit 604c2ccc5f008e264fe1eb4832d73fc40727ada6
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 17:13:23 2022 +0900
+
+    vue router 옮기는중
+
+    로그인 아직 못햇음...ㅠㅠㅠㅠ
+
+commit e689f0c4cdd74a29e0410d591aab13dd0d9e2483
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 15:19:48 2022 +0900
+
+    jwt 프론트
+
+commit 48bcd7750e138234f1e0b30a3108e58afb47972c
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 14:49:04 2022 +0900
+
+    jwt 백엔드
+
+commit 13b4edb8420dea1022715875f0cb13a4b3ccf1b2
+Merge: 97adbbc a3e7c69
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 12:34:00 2022 +0900
+
+    Merge branch 'taehun'
+
+commit a3e7c69fc874dc9f48beaffcdc589bba6962e5a7
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 12:32:28 2022 +0900
+
+    park rest api download from seoul
+
+commit 97adbbc122f7a671f1a9d85d69e004c79b6e46f4
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 09:55:15 2022 +0900
+
+    22.11.23
+
+commit 3c109522240fc83740450c7b4efebd84391d12fa
+Merge: d1b14e8 75dc818
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 09:46:47 2022 +0900
+
+    Merge branch 'master' of https://lab.ssafy.com/hoan123432/ssafy_final_project
+
+commit d1b14e8b9a848950375071925a1c704dde97cd23
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 09:46:32 2022 +0900
+
+    aaa
+
+commit 75dc818e478b565025754933e9010bfe1c36758a
+Merge: d9b0d3f eb3a09e
+Author: eodms <eodms090@naver.com>
+Date:   Wed Nov 23 09:44:23 2022 +0900
+
+    Merge branch 'master' of https://lab.ssafy.com/hoan123432/ssafy_final_project
+
+commit d9b0d3ff6bd6a72db0e2504488ef799ddb85f728
+Author: eodms <eodms090@naver.com>
+Date:   Wed Nov 23 09:43:52 2022 +0900
+
+    master spring 추가됨
+
+commit eb3a09e2990449f7225d05aa5ca5cbe283bfa15b
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 09:29:28 2022 +0900
+
+    Revert "게시판 백엔드 완성 뼈대"
+
+    This reverts commit 58a42becbf672698b05fd7940b0da4d46b5465d4.
+
+commit 338975e6c049b9781b9fdf3d8f77fb2df9f18aaa
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 09:21:20 2022 +0900
+
+    Revert "spring"
+
+    This reverts commit 43fac20cd2711c1cd3d07f30e7aa0968c298a2f0.
+
+commit 4efb22588151dcd8497667bc2930b2ff75ee9ec2
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 09:21:05 2022 +0900
+
+    Revert "게시판 백엔드 완성 뼈대"
+
+    This reverts commit 58a42becbf672698b05fd7940b0da4d46b5465d4.
+
+commit 41e5749996a503b9212ff009452a2e49e9aaff17
+Merge: c707088 43fac20
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 09:19:22 2022 +0900
+
+    Merge branch 'taehun'
+
+commit 43fac20cd2711c1cd3d07f30e7aa0968c298a2f0
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Wed Nov 23 09:18:41 2022 +0900
+
+    spring
+
+commit c707088c2cd71a59fa563a10304760b3e76b36c0
+Merge: 9cec018 58a42be
+Author: 조용관 <whdydrhks@naver.com>
+Date:   Wed Nov 23 09:08:39 2022 +0900
+
+    Merge branch 'taehun' into 'master'
+
+    editor 작성완료
+
+    See merge request hoan123432/ssafy_final_project!1
+
+commit 58a42becbf672698b05fd7940b0da4d46b5465d4
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Tue Nov 22 14:31:57 2022 +0900
+
+    게시판 백엔드 완성 뼈대
+
+    링크로 params를 던져주면 거기에 맞게 게시판 작성기가 나옴
+
+commit 3acf1c85219ce65bb2b0f05808553ecb53d1f20e
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Tue Nov 22 11:23:44 2022 +0900
+
+    building 탐색 완료
+
+    게시판이랑 연결작업 필요
+
+commit 25e15e8b6ba52972fa577192e301d153898b6371
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Tue Nov 22 00:27:10 2022 +0900
+
+    잘거야
+
+commit 380ed60892ad070ba7eeb91960cf6032b1ee69a4
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Tue Nov 22 00:12:27 2022 +0900
+
+    window opener 추가함
+
+commit 5fc9b45c44df7bb4c945ba840ab876d7945c513c
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Mon Nov 21 23:34:23 2022 +0900
+
+    p
+
+commit 4e16722cbd2eec1eb317356cb3128972bd6a5ad0
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Mon Nov 21 17:54:00 2022 +0900
+
+    5시53분
+
+commit 9b55ef8b2f05425928c3f801c21d6a949bd4f960
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Mon Nov 21 12:45:23 2022 +0900
+
+    로그인 기초 완료
+
+    jwt로 바꿔야함.
+    jwt가 login info session정보로 사용될거기때문임.
+
+commit d35f79baba7a7215aa7ea4cce828f29825a7b4d4
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Mon Nov 21 02:54:17 2022 +0900
+
+    goodnight
+
+commit 5468294ae6f50806f9a00c17dbc9d3026e5456f4
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Sun Nov 20 23:06:09 2022 +0900
+
+    이제 그만
+
+commit 3f735bcedf388224ffd7b056bf031278b4cb082e
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Sun Nov 20 20:55:19 2022 +0900
+
+    집에서 출발한다...ㅠㅠ
+
+commit 711fdb982744fb558b4c0b82752b42fe3459d133
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Sun Nov 20 18:00:02 2022 +0900
+
+    게시판 뼈대 완성
+
+    spring 추가해야하는거 : 이미지 upload실패시, db transaction
+
+    게시판 리스트 추가, article table 4개 컬럼 추가 및 그에 관련된 내용 수정
+
+commit 3e0d287947257308cd998703a9fd91f0dc2c44e0
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Sun Nov 20 02:19:00 2022 +0900
+
+    백엔드(spring) 추가됨
+
+commit dc3d3a35d21b084a7987a5afc902ecc5e8c50c78
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Sun Nov 20 02:17:29 2022 +0900
+
+    editor 작성완료
+
+    게시판 수정, 삭제는 아직 안함
+
+commit 6907c22b684f7b4f9349b70af180812c184b7fc7
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 17 17:51:37 2022 +0900
+
+    vue 실패, 다시해
+
+commit 9cec01808de79abeebb9193a5e818a0c2e9d3d9e
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 17 16:54:36 2022 +0900
+
+    a
+
+commit 05f9218ac0143f4555368ef2df7616d686a98f1b
+Author: eodms <eodms090@naver.com>
+Date:   Thu Nov 17 16:44:35 2022 +0900
+
+    Update index.html
+
+commit f84fbc0edfb0bdc5f10547e88163984eb5b315b9
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 17 16:33:19 2022 +0900
+
+    init
+
+commit fa8791c0a3e28beeaefca19b6d86e66b9713aa0f
+Author: 김태훈 <hoan123432@naver.com>
+Date:   Thu Nov 17 16:31:28 2022 +0900
+
+    Initial commit
+(END)
+commit 6907c22b684f7b4f9349b70af180812c184b7fc7
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 17 17:51:37 2022 +0900
+
+    vue 실패, 다시해
+
+commit 9cec01808de79abeebb9193a5e818a0c2e9d3d9e
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 17 16:54:36 2022 +0900
+
+    a
+
+commit 05f9218ac0143f4555368ef2df7616d686a98f1b
+Author: eodms <eodms090@naver.com>
+Date:   Thu Nov 17 16:44:35 2022 +0900
+
+    Update index.html
+
+commit f84fbc0edfb0bdc5f10547e88163984eb5b315b9
+Author: hoan123432 <hoan123432@naver.com>
+Date:   Thu Nov 17 16:33:19 2022 +0900
+
+    init
+
+commit fa8791c0a3e28beeaefca19b6d86e66b9713aa0f
+Author: 김태훈 <hoan123432@naver.com>
+Date:   Thu Nov 17 16:31:28 2022 +0900
+
+    Initial commit
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
