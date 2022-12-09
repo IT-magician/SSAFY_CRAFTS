@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.apartment.dao.apartmentDAO">
+
+	<select id="test" resultType="apartmentDBDTO">
+		select * from transaction
+	</select>
+
+	<select id="getApartments" parameterType="string"
+		resultType="apartmentDBDTO">
+		select * from transaction
+		where sigunguCode like #{sigunguCode}
+		<if test="dong != null">
+			and dong = #{dong}
+		</if>
+	</select>
+
+	<select id="countApartments" parameterType="string"
+		resultType="int">
+		select count(*) from transaction
+		where sigunguCode like
+		#{sigunguCode}
+		limit 0,1
+	</select>
+
+	<insert id="insertApartments" parameterType="apartmentDTO">
+		insert into transaction values
+<!-- 		<trim suffixOverrides=","> -->
+			<foreach collection="data" item="tmp" separator=",">
+				(#{tmp.apt},#{tmp.floor},#{tmp.area},#{tmp.jibun},#{tmp.dong},#{tmp.transactionAmount},#{tmp.sigunguCode})
+			</foreach>
+<!-- 		</trim> -->
+	</insert>
+	
+	<select id="getUserRecentApartmentSearch" parameterType="string" resultType="apartmentDTO">
+		SELECT apt, floor, area, dong, transactionAmount, jibun
+		FROM transaction
+		where sigunguCode in (select LEFT(code,5) from userFavor where id = #{id})
+		and dong in (select LEFT(dong,5) from userFavor where id = #{id})
+	</select>
+	
+	<select id="getUserFavorSync" parameterType="string" resultType="string">
+		select distinct LEFT(code, ${code.length} )
+		from userFavor
+		where id = #{id}
+	</select>
+	
+	<delete id="deleteFavApt">
+		delete from userfavor where id=#{id} and code = #{code} and dong = #{dong}
+	</delete>
+	
+	<insert id="insertFavApt">
+		insert into userfavor values(#{id}, #{code}, #{dong})
+	</insert>
+
+</mapper>

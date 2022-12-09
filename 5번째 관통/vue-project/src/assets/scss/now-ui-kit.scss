@@ -1,0 +1,329 @@
+/*!
+
+ =========================================================
+ * Vue Now UI Kit - v1.1.0
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/now-ui-kit
+ * Copyright 2019 Creative Tim (http://www.creative-tim.com)
+
+ * Designed by www.invisionapp.com Coded by www.creative-tim.com
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+
+@import 'now-ui-kit/variables';
+@import 'now-ui-kit/mixins';
+
+// Plugins CSS
+@import "now-ui-kit/plugins/plugin-bootstrap-switch";
+@import "now-ui-kit/plugins/plugin-nouislider";
+@import "now-ui-kit/plugins/plugin-datepicker";
+
+// Core CSS
+@import "now-ui-kit/buttons";
+@import "now-ui-kit/inputs";
+@import "now-ui-kit/checkboxes-radio";
+@import "now-ui-kit/progress";
+@import "now-ui-kit/badges";
+@import "now-ui-kit/pagination";
+@import "now-ui-kit/typography";
+@import "now-ui-kit/misc";
+@import "now-ui-kit/pills";
+
+// components
+@import "now-ui-kit/nucleo-outline";
+
+@import "now-ui-kit/tabs";
+@import "now-ui-kit/navbar";
+@import "now-ui-kit/dropdown";
+@import "now-ui-kit/alerts";
+@import "now-ui-kit/images";
+@import "now-ui-kit/popups";
+@import "now-ui-kit/modals";
+@import "now-ui-kit/carousel";
+@import "now-ui-kit/footers";
+
+// Cards
+@import "now-ui-kit/cards";
+@import "now-ui-kit/cards/card-plain";
+@import "now-ui-kit/cards/card-signup";
+
+// example pages and sections
+@import "now-ui-kit/example-pages";
+@import "now-ui-kit/sections";
+
+
+@import "now-ui-kit/responsive";
+
+// Element UI plugins
+@import "now-ui-kit/element-ui-plugins/carousel";
+@import "now-ui-kit/element-ui-plugins/date_picker";
+@import "now-ui-kit/element-ui-plugins/input";
+@import "now-ui-kit/element-ui-plugins/tooltip";
+@import "now-ui-kit/element-ui-plugins/popover";
+
+// @import 'now-ui-kit/table';
+
+
+body {
+    margin-top: $header-height;
+}
+
+.wrapper {
+    position: relative;
+    min-height: calc(100vh - $header-height - $footer-height);
+}
+
+.section-signup,
+.section-login
+ {
+    background-size: cover;
+    background-position: top center;
+    min-height: 500px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.section-index
+{
+
+}
+
+.background-img {
+    position: relative;
+    width: 100%;
+    height: 250px;
+
+    img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.search-district {}
+
+.input-boxes {
+    display: flex;
+    padding: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &>* {
+        margin-right: 10px;
+    }
+}
+
+.select {
+    padding: 10px;
+}
+
+#map {
+    position: relative;
+    height: 450px;
+    width: calc(70% - 25px);
+    margin: 45px auto;
+}
+
+
+.apartment{
+    td:nth-last-child(1),
+    td:nth-last-child(2){
+        display: none !important;
+    }
+
+    tbody tr{
+        cursor: pointer;
+    }
+}
+
+
+$box-width: 120px;
+$box-height: 40px;
+
+.userFavor{
+    &-setting{
+        position: fixed;
+        top:0;
+        left: 0;
+        width: 0;
+        height: 0;
+        transition: .1s ease-in;
+    
+    
+        &:has(&-open:checked){
+            width: 100%;
+            height: 100vh;
+            background: #434750;
+            // z-index: 10;
+            overflow-y: auto;
+
+            z-index: 2000;
+
+            .opener-icon::before{
+                position: relative;
+                left: 15px;
+                top: 15px;
+                content: '\f057';
+                font-family: "FontAwesome";
+                font-size: 2.0rem;
+                color: rgb(133, 133, 133);
+                cursor: pointer;
+            }
+        }
+
+        .opener-icon::before{
+            position: relative;
+            left: 15px;
+            top: 15px;
+            content: '\f08b';
+            font-family: "FontAwesome";
+            font-size: 2.0rem;
+            color: #434750;
+            cursor: pointer;
+        }
+        &-open{
+            display: none;
+        }
+    }
+
+    input:not(input:checked) ~ &-selectBox{
+        display: none;
+    }
+
+    &-selectBox{
+        position: relative;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 25px;
+
+        ul{
+            position: relative;
+            transform: skewY(-15deg);
+            transition: 10s;
+
+            .active >label> .icon{
+                background: var(--clr);
+            }
+            
+            
+            li{
+                position: relative;
+                list-style: none;
+                width: $box-width;
+                background: #3e3f46;
+                height: 60px;
+                transition: 0.5s;
+                z-index: var(--i);
+                margin: 0 30px 0 30px;
+                color: #fff;
+
+
+                &:has(input:checked) {
+                    .icon::before,
+                    .label{
+                        color: #5be7a9;
+                    }
+
+                    
+                    .icon::before{
+                        //https://fontawesome.com/docs/web/style/style-cheatsheet
+                        font-family: "Font Awesome 6 Free";
+                        content: "\f058";
+                    }
+                }
+
+                .icon::before{
+                    //https://fontawesome.com/docs/web/style/style-cheatsheet
+                    font-family: "Font Awesome 6 Free";
+                     content: "\f111";
+                }
+                
+                label {
+                    // width: $box-width;
+                    // height: 100%;
+                    cursor: pointer;
+
+
+                    .icon,
+                    .label,
+                    .top {
+                        content: '';
+                        position: absolute;
+                        background: #3e3f46;
+                        filter: brightness(.7);
+                    }
+
+                    .icon {
+                        top: 0;
+                        left: -$box-height;
+                        width: $box-height;
+                        height: 100%;
+                        transform-origin: right;
+                        transform: skewY(45deg);
+                        background: #40414b;
+                    }
+
+                    .icon,
+                    .label {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    .top {
+                        width: 100%;
+                        height: $box-height;
+                        left: calc($box-height/2 * -1);
+                        top: -$box-height;
+                        background: #404149;
+                        transform-origin: right;
+                        transform: skewX(45deg);
+                    }
+
+                    .label{
+                        width: 100%;
+                        height: 100%;
+                        background: #44464e;
+                        // user-select: none;
+
+                        transform: translateY(-7px);
+                    }
+
+                    &:hover{
+                        // transform: translateX(-30px);
+                        // .top,
+                        // .icon,
+                        .label{
+                            background: var(--clr);
+                        }
+
+                        .top{
+                            filter: brightness(0.7);
+                        }
+                        .icon{
+                            filter: brightness(0.5);
+                        }
+                        
+                    }
+                }
+
+                input[type="checkbox"]{
+                    display: none;
+                }
+
+
+                &:hover{
+                    transform: translateX(-50px);
+                }
+            }
+        }
+    }
+}

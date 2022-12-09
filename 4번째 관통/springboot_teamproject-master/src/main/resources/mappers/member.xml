@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.ssafy.member.model.mapper.MemberMapper">
+
+	<resultMap type="member" id="member">
+		<result column="id" property="id"/>
+		<result column="pw" property="pw"/>
+	</resultMap>
+	
+	
+	<select id="idCheck" parameterType="String" resultType="int">
+		select count(id)
+		from member
+		where id = #{id}
+	</select>
+
+	<insert id="joinMember" parameterType="member">
+		insert into member (id, pw, name, adr)
+		values (#{id}, #{pw}, #{name}, #{adr})
+	</insert>
+
+	<select id="loginMember" parameterType="map" resultType="member">
+		select *
+		from member
+		where id=#{id} and pw=#{pw}
+	</select>
+	
+	<select id="test" resultType="Member">
+		select * from member;
+	</select>
+	
+	<update id="updateUserInfo" parameterType="Member">
+		update member set id=#{id}, pw=#{pw}, name=#{name}, adr=#{adr}
+	</update>
+	
+	<delete id="deleteUser" parameterType="string">
+		delete from member where id = #{id}
+	</delete>
+	
+</mapper>
