@@ -16,16 +16,16 @@ Rest Api와 Vue.js를 기반으로 SPA를 만드는 프로젝트(npm 기반, scs
 # preview
 
 - 컴포넌트 구조화  
-  ![preview0](./img/preview0.png)
+  ![preview0](./img/preview0.PNG)
 - 회원 가입 (Rest API 및 Vue 사용)  
   ![preview1](./img/preview1.png)
 - 로그인
   ![preview2](./img/preview2.png)
 - 로그인 시 화면
-  ![preview3](./img/preview3.png)
+  ![preview3](./img/preview3.PNG)
 - 회원 정보 수정, 삭제
-  ![preview4](./img/preview4.png)
+  ![preview4](./img/preview4.PNG)
 - 아파트 매매 정보 조회
-  ![preview5](./img/preview5.png)
+  ![preview5](./img/preview5.PNG)
 - 클래스 다이어그램
-  ![preview6](./img/preview6.png)
+  ![preview6](./img/preview6.PNG)
